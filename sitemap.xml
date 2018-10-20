@@ -8,9 +8,8 @@
 <url> <loc>https://amilajack.github.io/neon-docs/blog/2017/09/25/testing-rss</loc> <changefreq>weekly</changefreq> <priority>0.3</priority> </url>
 <url> <loc>https://amilajack.github.io/neon-docs/blog/2017/04/10/blog-post-two</loc> <changefreq>weekly</changefreq> <priority>0.3</priority> </url>
 <url> <loc>https://amilajack.github.io/neon-docs/blog/2016/03/11/blog-post</loc> <changefreq>weekly</changefreq> <priority>0.3</priority> </url>
-<url> <loc>https://amilajack.github.io/neon-docs/docs/doc1</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://amilajack.github.io/neon-docs/docs/doc1" /> </url>
-<url> <loc>https://amilajack.github.io/neon-docs/docs/doc2</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://amilajack.github.io/neon-docs/docs/doc2" /> </url>
-<url> <loc>https://amilajack.github.io/neon-docs/docs/doc3</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://amilajack.github.io/neon-docs/docs/doc3" /> </url>
-<url> <loc>https://amilajack.github.io/neon-docs/docs/doc4</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://amilajack.github.io/neon-docs/docs/doc4" /> </url>
-<url> <loc>https://amilajack.github.io/neon-docs/docs/doc5</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://amilajack.github.io/neon-docs/docs/doc5" /> </url>
+<url> <loc>https://amilajack.github.io/neon-docs/docs/electron-apps</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://amilajack.github.io/neon-docs/docs/electron-apps" /> </url>
+<url> <loc>https://amilajack.github.io/neon-docs/docs/getting-started</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://amilajack.github.io/neon-docs/docs/getting-started" /> </url>
+<url> <loc>https://amilajack.github.io/neon-docs/docs/hello-world</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://amilajack.github.io/neon-docs/docs/hello-world" /> </url>
+<url> <loc>https://amilajack.github.io/neon-docs/docs/intro</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://amilajack.github.io/neon-docs/docs/intro" /> </url>
 </urlset>
