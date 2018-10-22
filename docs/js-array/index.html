@@ -28,22 +28,19 @@
         </script></nav></div><div class="container mainContainer docMainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Using JsArray</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="converting-from-vec-to-jsarray"></a><a href="#converting-from-vec-to-jsarray" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Converting from Vec to JsArray</h2>
 <p>Here is a simple example of converting a rust <code>Vec</code> to a JS <code>Array</code> using <code>JsArray</code>:</p>
 <pre><code class="hljs css language-rust"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">convert_vec_to_array</span></span>(<span class="hljs-keyword">mut</span> cx: FunctionContext) -&gt; JsResult&lt;JsArray&gt; {
-    <span class="hljs-keyword">let</span> vec = <span class="hljs-built_in">Vec</span>::with_capacity(<span class="hljs-number">100</span>);
+    <span class="hljs-keyword">let</span> vec: <span class="hljs-built_in">Vec</span>&lt;<span class="hljs-built_in">String</span>&gt; = <span class="hljs-built_in">Vec</span>::with_capacity(<span class="hljs-number">100</span>);
 
     <span class="hljs-comment">// Create the JS array</span>
-    <span class="hljs-keyword">let</span> js_array = JsArray::new(&amp;<span class="hljs-keyword">mut</span> cx, res.len() <span class="hljs-keyword">as</span> <span class="hljs-built_in">u32</span>);
+    <span class="hljs-keyword">let</span> js_array = JsArray::new(&amp;<span class="hljs-keyword">mut</span> cx, vec.len() <span class="hljs-keyword">as</span> <span class="hljs-built_in">u32</span>);
 
     <span class="hljs-comment">// Iterate over the rust Vec and map each value in the Vec to the JS array</span>
-    <span class="hljs-keyword">for</span> (i, obj) <span class="hljs-keyword">in</span> mapped.iter().enumerate() {
-        <span class="hljs-keyword">let</span> _ = array.set(&amp;<span class="hljs-keyword">mut</span> cx, i <span class="hljs-keyword">as</span> <span class="hljs-built_in">u32</span>, *obj);
+    <span class="hljs-keyword">for</span> (i, obj) <span class="hljs-keyword">in</span> vec.iter().enumerate() {
+        <span class="hljs-keyword">let</span> js_string = cx.string(obj);
+        <span class="hljs-keyword">let</span> _  = js_array.set(&amp;<span class="hljs-keyword">mut</span> cx, i <span class="hljs-keyword">as</span> <span class="hljs-built_in">u32</span>, js_string);
     }
 
-    <span class="hljs-literal">Ok</span>(array)
+    <span class="hljs-literal">Ok</span>(js_array)
 }
-
-register_module!(<span class="hljs-keyword">mut</span> cx, {
-    cx.export_function(<span class="hljs-string">"convert_vec_to_array"</span>, convert_vec_to_array)
-});
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" id="returning-an-empty-element"></a><a href="#returning-an-empty-element" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returning an empty element</h2>
 <pre><code class="hljs css language-rust"><span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">return_js_array</span></span>(<span class="hljs-keyword">mut</span> cx: FunctionContext) -&gt; JsResult&lt;JsArray&gt; {
