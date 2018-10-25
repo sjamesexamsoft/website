@@ -1,0 +1,157 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>SDL2 Binding (WIP) · Neon</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="**This doc is currently a work in progress**"/><meta name="docsearch:language" content="zh-CN"/><meta property="og:title" content="SDL2 Binding (WIP) · Neon"/><meta property="og:type" content="website"/><meta property="og:url" content="https://amilajack.github.io/neon-docs/index.html"/><meta property="og:description" content="**This doc is currently a work in progress**"/><meta property="og:image" content="https://amilajack.github.io/neon-docs/img/docusaurus.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://amilajack.github.io/neon-docs/img/docusaurus.png"/><link rel="shortcut icon" href="/neon-docs/img/favicon.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://amilajack.github.io/neon-docs/blog/atom.xml" title="Neon Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://amilajack.github.io/neon-docs/blog/feed.xml" title="Neon Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/neon-docs/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/neon-docs/zh-CN"><img class="logo" src="/neon-docs/img/docusaurus.svg" alt="Neon"/><h2 class="headerTitleWithLogo">Neon</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/neon-docs/docs/zh-CN/intro" target="_self">Guides</a></li><li class=""><a href="/neon-docs/zh-CN/help" target="_self">Help</a></li><li class=""><a href="/neon-docs/blog/" target="_self">Blog</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/neon-docs/img/language.svg" alt="Languages icon"/>中文</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/neon-docs/docs/ja/sdl2-guide">日本語</a></li><li><a href="/neon-docs/docs/en/sdl2-guide">English</a></li><li><a href="/neon-docs/docs/es-ES/sdl2-guide">Español</a></li><li><a href="/neon-docs/docs/fr/sdl2-guide">Français</a></li><li><a href="/neon-docs/docs/ko/sdl2-guide">한국어</a></li><li><a href="/neon-docs/docs/pt-BR/sdl2-guide">Português (Brasil)</a></li><li><a href="/neon-docs/docs/ru/sdl2-guide">Русский</a></li><li><a href="/neon-docs/docs/zh-TW/sdl2-guide">繁體中文</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Guides</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"></div></section></div><script>
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docMainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">SDL2 Binding (WIP)</h1></header><article><div><span><p><strong>This doc is currently a work in progress</strong></p>
+<p>For now, reference this snippet, taken <a href="https://github.com/neon-bindings/neon/issues/354#issuecomment-417346932" target="_blank">from this comment:</a></p>
+<pre><code class="hljs css language-rust"><span class="hljs-comment">// lib.rs</span>
+<span class="hljs-meta">#[macro_use]</span>
+<span class="hljs-keyword">extern</span> <span class="hljs-keyword">crate</span> neon;
+<span class="hljs-keyword">extern</span> <span class="hljs-keyword">crate</span> sdl2;
+
+<span class="hljs-keyword">use</span> neon::context::Context;
+<span class="hljs-keyword">use</span> neon::types::{JsNumber, JsUndefined};
+
+<span class="hljs-keyword">use</span> sdl2::pixels::Color;
+<span class="hljs-keyword">use</span> sdl2::render::WindowCanvas;
+
+<span class="hljs-keyword">pub</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Canvas</span></span>(WindowCanvas);
+
+declare_types! {
+    <span class="hljs-keyword">pub</span> class JsCanvas <span class="hljs-keyword">for</span> Canvas {
+        init(<span class="hljs-keyword">mut</span> cx) {
+            <span class="hljs-keyword">let</span> sdl_context = sdl2::init()
+                .or_else(|err| cx.throw_error(err.to_string()))?;
+
+            <span class="hljs-keyword">let</span> video_subsystem = sdl_context.video()
+                .or_else(|err| cx.throw_error(err.to_string()))?;
+
+            <span class="hljs-keyword">let</span> window = video_subsystem.window(<span class="hljs-string">"rust-sdl2 demo"</span>, <span class="hljs-number">800</span>, <span class="hljs-number">600</span>)
+                .position_centered()
+                .build()
+                .or_else(|err| cx.throw_error(err.to_string()))?;
+
+            <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> canvas = window.into_canvas().build()
+                .or_else(|err| cx.throw_error(err.to_string()))?;
+
+            canvas.set_draw_color(Color::RGB(<span class="hljs-number">0</span>, <span class="hljs-number">255</span>, <span class="hljs-number">255</span>));
+            canvas.clear();
+            canvas.present();
+
+            <span class="hljs-literal">Ok</span>(Canvas(canvas))
+        }
+
+        method set_draw_color(<span class="hljs-keyword">mut</span> cx) {
+            <span class="hljs-keyword">let</span> r = cx.argument::&lt;JsNumber&gt;(<span class="hljs-number">0</span>)?.value() <span class="hljs-keyword">as</span> <span class="hljs-built_in">u8</span>;
+            <span class="hljs-keyword">let</span> g = cx.argument::&lt;JsNumber&gt;(<span class="hljs-number">1</span>)?.value() <span class="hljs-keyword">as</span> <span class="hljs-built_in">u8</span>;
+            <span class="hljs-keyword">let</span> b = cx.argument::&lt;JsNumber&gt;(<span class="hljs-number">2</span>)?.value() <span class="hljs-keyword">as</span> <span class="hljs-built_in">u8</span>;
+
+            <span class="hljs-keyword">let</span> color = Color::RGB(r, g, b);
+            <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> this = cx.this();
+
+            cx.borrow_mut(&amp;<span class="hljs-keyword">mut</span> this, |<span class="hljs-keyword">mut</span> canvas| canvas.<span class="hljs-number">0</span>.set_draw_color(color));
+
+            <span class="hljs-literal">Ok</span>(JsUndefined::new().upcast())
+        }
+
+        method present(<span class="hljs-keyword">mut</span> cx) {
+            <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> this = cx.this();
+
+            cx.borrow_mut(&amp;<span class="hljs-keyword">mut</span> this, |<span class="hljs-keyword">mut</span> canvas| canvas.<span class="hljs-number">0</span>.present());
+
+            <span class="hljs-literal">Ok</span>(JsUndefined::new().upcast())
+        }
+
+        method clear(<span class="hljs-keyword">mut</span> cx) {
+            <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> this = cx.this();
+
+            cx.borrow_mut(&amp;<span class="hljs-keyword">mut</span> this, |<span class="hljs-keyword">mut</span> canvas| canvas.<span class="hljs-number">0</span>.clear());
+
+            <span class="hljs-literal">Ok</span>(JsUndefined::new().upcast())
+        }
+    }
+}
+
+register_module!(<span class="hljs-keyword">mut</span> cx, {
+    cx.export_class::&lt;JsCanvas&gt;(<span class="hljs-string">"Canvas"</span>)?;
+
+    <span class="hljs-literal">Ok</span>(())
+});
+</code></pre>
+<pre><code class="hljs css language-js"><span class="hljs-comment">// index.js</span>
+<span class="hljs-keyword">const</span> { Canvas } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../native'</span>);
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sleep</span>(<span class="hljs-params">n</span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-params">resolve</span> =&gt;</span> setTimeout(resolve, n));
+}
+
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">run</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">const</span> canvas = <span class="hljs-keyword">new</span> Canvas();
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">1000</span>; i++) {
+        <span class="hljs-keyword">const</span> m = i % <span class="hljs-number">255</span>;
+
+        canvas.set_draw_color(m, <span class="hljs-number">64</span>, <span class="hljs-number">255</span> - m);
+        canvas.clear();
+        canvas.present();
+
+        <span class="hljs-keyword">await</span> sleep(<span class="hljs-number">10</span>);
+    }
+}
+
+run();
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/neon-docs/docs/zh-CN/word-counting-guide"><span class="arrow-prev">← </span><span>Previous</span></a><a class="docs-next button" href="/neon-docs/docs/zh-CN/example-projects"><span>Next</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav docOnPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/neon-docs/" class="nav-home"><img src="/neon-docs/img/docusaurus.svg" alt="Neon" width="66" height="58"/></a><div><h5>Docs</h5><a href="/neon-docs/docs/zh-CN/doc1.html">Getting Started (or other categories)</a><a href="/neon-docs/docs/zh-CN/doc2.html">Guides (or other categories)</a><a href="/neon-docs/docs/zh-CN/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/neon-docs/zh-CN/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/neon-docs/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2018 Amila Welihinda</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: 'bfa6bb4b57d4fa853c0358ee9b195146',
+                indexName: 'amilajack_neon',
+                inputSelector: '#search_input_react'
+              });
+            </script></body></html>

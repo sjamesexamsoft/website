@@ -1,0 +1,211 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Using Macros for JS Classes (WIP) · Neon</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="**This doc is currently a work in progress**"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Using Macros for JS Classes (WIP) · Neon"/><meta property="og:type" content="website"/><meta property="og:url" content="https://amilajack.github.io/neon-docs/index.html"/><meta property="og:description" content="**This doc is currently a work in progress**"/><meta property="og:image" content="https://amilajack.github.io/neon-docs/img/docusaurus.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://amilajack.github.io/neon-docs/img/docusaurus.png"/><link rel="shortcut icon" href="/neon-docs/img/favicon.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://amilajack.github.io/neon-docs/blog/atom.xml" title="Neon Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://amilajack.github.io/neon-docs/blog/feed.xml" title="Neon Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/neon-docs/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/neon-docs/en"><img class="logo" src="/neon-docs/img/docusaurus.svg" alt="Neon"/><h2 class="headerTitleWithLogo">Neon</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/neon-docs/docs/en/intro" target="_self">Guides</a></li><li class=""><a href="/neon-docs/en/help" target="_self">Help</a></li><li class=""><a href="/neon-docs/blog/" target="_self">Blog</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/neon-docs/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/neon-docs/docs/ja/using-js-class-macros">日本語</a></li><li><a href="/neon-docs/docs/es-ES/using-js-class-macros">Español</a></li><li><a href="/neon-docs/docs/fr/using-js-class-macros">Français</a></li><li><a href="/neon-docs/docs/ko/using-js-class-macros">한국어</a></li><li><a href="/neon-docs/docs/pt-BR/using-js-class-macros">Português (Brasil)</a></li><li><a href="/neon-docs/docs/ru/using-js-class-macros">Русский</a></li><li><a href="/neon-docs/docs/zh-CN/using-js-class-macros">中文</a></li><li><a href="/neon-docs/docs/zh-TW/using-js-class-macros">繁體中文</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Basics</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Getting Started</h3><ul><li class="navListItem"><a class="navItem" href="/neon-docs/docs/en/intro">Introduction</a></li><li class="navListItem"><a class="navItem" href="/neon-docs/docs/en/getting-started">Getting Started</a></li><li class="navListItem"><a class="navItem" href="/neon-docs/docs/en/hello-world">Hello World!</a></li><li class="navListItem"><a class="navItem" href="/neon-docs/docs/en/electron-apps">Electron Apps</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Basics</h3><ul><li class="navListItem"><a class="navItem" href="/neon-docs/docs/en/js-array">Using JsArray</a></li><li class="navListItem"><a class="navItem" href="/neon-docs/docs/en/js-object">Using JsObject</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/neon-docs/docs/en/using-js-class-macros">Using Macros for JS Classes (WIP)</a></li><li class="navListItem"><a class="navItem" href="/neon-docs/docs/en/using-async-tasks">Using Async Tasks (WIP)</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Guides</h3><ul><li class="navListItem"><a class="navItem" href="/neon-docs/docs/en/word-counting-guide">Word Counting</a></li><li class="navListItem"><a class="navItem" href="/neon-docs/docs/en/sdl2-guide">SDL2 Binding (WIP)</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Misc</h3><ul><li class="navListItem"><a class="navItem" href="/neon-docs/docs/en/example-projects">Example Projects</a></li></ul></div></div></section></div><script>
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docMainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Using Macros for JS Classes (WIP)</h1></header><article><div><span><p><strong>This doc is currently a work in progress</strong></p>
+<p>For now, reference this snippet, taken <a href="https://github.com/neon-bindings/neon/blob/master/test/dynamic/native/src/js/classes.rs" target="_blank">from the tests:</a></p>
+<h2><a class="anchor" aria-hidden="true" id="simple-example"></a><a href="#simple-example" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Simple Example</h2>
+<p>Let's create a simple struct that our class will use:</p>
+<pre><code class="hljs css language-rust"><span class="hljs-keyword">pub</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Employee</span></span> {
+    id: <span class="hljs-built_in">i32</span>,
+    name: <span class="hljs-built_in">String</span>,
+    <span class="hljs-comment">// etc ...</span>
+}
+</code></pre>
+<p>Now let's defines a custom JS class whose instances contain an Employee record:</p>
+<pre><code class="hljs css language-rust">declare_types! {
+    <span class="hljs-comment">/// JS class wrapping Employee records.</span>
+    <span class="hljs-keyword">pub</span> class JsEmployee <span class="hljs-keyword">for</span> Employee {
+
+        init(call) {
+            <span class="hljs-keyword">let</span> scope = call.scope;
+            <span class="hljs-keyword">let</span> id = <span class="hljs-built_in">try!</span>(<span class="hljs-built_in">try!</span>(call.arguments.require(scope, <span class="hljs-number">0</span>)).check::&lt;JsInteger&gt;());
+            <span class="hljs-keyword">let</span> name = <span class="hljs-built_in">try!</span>(<span class="hljs-built_in">try!</span>(call.arguments.require(scope, <span class="hljs-number">1</span>)).to_string());
+            <span class="hljs-comment">// etc ...</span>
+            <span class="hljs-literal">Ok</span>(Employee {
+                id: id.value() <span class="hljs-keyword">as</span> <span class="hljs-built_in">i32</span>,
+                name: name.value(),
+                <span class="hljs-comment">// etc ...</span>
+            })
+        }
+
+        method name(call) {
+            <span class="hljs-keyword">let</span> scope = call.scope;
+            <span class="hljs-keyword">let</span> this: Handle&lt;JsEmployee&gt; = call.arguments.this(scope);
+            <span class="hljs-keyword">let</span> name = <span class="hljs-built_in">try!</span>(vm::lock(this, |employee| {
+                employee.name.clone()
+            });
+            <span class="hljs-literal">Ok</span>(<span class="hljs-built_in">try!</span>(JsString::new_or_throw(scope, &amp;name[..])).upcast())
+        }
+    }
+};
+</code></pre>
+<p>This code binds <code>JsEmployee</code> to a Rust type that can create the class at runtime (i.e., the constructor function and prototype object). The init function defines the behavior for allocating the internals during construction of a new instance. The name method shows an example of how you can use <code>vm::lock</code> to borrow a reference to the internal Rust data of an instance.</p>
+<p>From there, you can extract the constructor function and expose it to JS, for example by exporting it from a native module:</p>
+<pre><code class="hljs css language-rust">register_module!(m, {
+    <span class="hljs-keyword">let</span> scope = m.scope;
+    <span class="hljs-keyword">let</span> class = <span class="hljs-built_in">try!</span>(JsEmployee::class(scope));       <span class="hljs-comment">// get the class</span>
+    <span class="hljs-keyword">let</span> constructor = <span class="hljs-built_in">try!</span>(class.constructor(scope)); <span class="hljs-comment">// get the constructor</span>
+    <span class="hljs-built_in">try!</span>(m.exports.set(<span class="hljs-string">"Employee"</span>, constructor));     <span class="hljs-comment">// export the constructor</span>
+});
+</code></pre>
+<p>Then you can use instances of this type in JS just like any other object:</p>
+<pre><code class="hljs css language-js"><span class="hljs-keyword">const</span> Employee = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./native'</span>).Employee;
+
+<span class="hljs-keyword">const</span> lumbergh = <span class="hljs-keyword">new</span> Employee(<span class="hljs-number">9001</span>, <span class="hljs-string">"Bill Lumbergh"</span>);
+<span class="hljs-built_in">console</span>.log(lumbergh.name()); <span class="hljs-comment">// Bill Lumbergh</span>
+</code></pre>
+<p>Since the methods on <code>Employee</code> expect this to have the right binary layout, they check to make sure that they aren’t being called on an inappropriate object type. This means you can’t segfault Node by doing something like:</p>
+<pre><code class="hljs css language-js">Employee.prototype.name.call({});
+</code></pre>
+<p>This safely throws a <code>TypeError</code> exception just like methods from other native classes like <code>Date</code> or <code>Buffer</code> do.</p>
+<h2><a class="anchor" aria-hidden="true" id="advanced-example"></a><a href="#advanced-example" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Advanced Example</h2>
+<pre><code class="hljs css language-rust"><span class="hljs-keyword">use</span> neon::prelude::*;
+
+<span class="hljs-keyword">pub</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">User</span></span> {
+  id: <span class="hljs-built_in">i32</span>,
+  first_name: <span class="hljs-built_in">String</span>,
+  last_name: <span class="hljs-built_in">String</span>,
+  email: <span class="hljs-built_in">String</span>,
+}
+
+<span class="hljs-class"><span class="hljs-keyword">type</span> <span class="hljs-title">Unit</span></span> = ();
+
+declare_types! {
+  <span class="hljs-keyword">pub</span> class JsPanickyAllocator <span class="hljs-keyword">for</span> Unit {
+    init(_) {
+      <span class="hljs-built_in">panic!</span>(<span class="hljs-string">"allocator panicking"</span>)
+    }
+  }
+
+  <span class="hljs-keyword">pub</span> class JsPanickyConstructor <span class="hljs-keyword">for</span> Unit {
+    init(_) {
+      <span class="hljs-literal">Ok</span>(())
+    }
+
+    call(_) {
+      <span class="hljs-built_in">panic!</span>(<span class="hljs-string">"constructor call panicking"</span>)
+    }
+
+    constructor(_) {
+      <span class="hljs-built_in">panic!</span>(<span class="hljs-string">"constructor panicking"</span>)
+    }
+  }
+
+  <span class="hljs-keyword">pub</span> class JsUser <span class="hljs-keyword">for</span> User {
+    init(<span class="hljs-keyword">mut</span> cx) {
+      <span class="hljs-keyword">let</span> id = cx.argument::&lt;JsNumber&gt;(<span class="hljs-number">0</span>)?;
+      <span class="hljs-keyword">let</span> first_name: Handle&lt;JsString&gt; = cx.argument::&lt;JsString&gt;(<span class="hljs-number">1</span>)?;
+      <span class="hljs-keyword">let</span> last_name: Handle&lt;JsString&gt; = cx.argument::&lt;JsString&gt;(<span class="hljs-number">2</span>)?;
+      <span class="hljs-keyword">let</span> email: Handle&lt;JsString&gt; = cx.argument::&lt;JsString&gt;(<span class="hljs-number">3</span>)?;
+
+      <span class="hljs-literal">Ok</span>(User {
+        id: id.value() <span class="hljs-keyword">as</span> <span class="hljs-built_in">i32</span>,
+        first_name: first_name.value(),
+        last_name: last_name.value(),
+        email: email.value(),
+      })
+    }
+
+    method get(<span class="hljs-keyword">mut</span> cx) {
+      <span class="hljs-keyword">let</span> attr: <span class="hljs-built_in">String</span> = cx.argument::&lt;JsString&gt;(<span class="hljs-number">0</span>)?.value();
+
+      <span class="hljs-keyword">let</span> this = cx.this();
+
+      <span class="hljs-keyword">match</span> &amp;attr[..] {
+        <span class="hljs-string">"id"</span> =&gt; {
+          <span class="hljs-keyword">let</span> id = {
+            <span class="hljs-keyword">let</span> guard = cx.lock();
+            <span class="hljs-keyword">let</span> user = this.borrow(&amp;guard);
+            user.id
+          };
+          <span class="hljs-literal">Ok</span>(cx.number(id).upcast())
+        },
+        <span class="hljs-string">"first_name"</span> =&gt; {
+          <span class="hljs-keyword">let</span> first_name = {
+            <span class="hljs-keyword">let</span> guard = cx.lock();
+            <span class="hljs-keyword">let</span> user = this.borrow(&amp;guard);
+            user.first_name.clone()
+          };
+          <span class="hljs-literal">Ok</span>(cx.string(&amp;first_name).upcast())
+        },
+        <span class="hljs-string">"last_name"</span> =&gt; {
+          <span class="hljs-keyword">let</span> last_name = {
+            <span class="hljs-keyword">let</span> guard = cx.lock();
+            <span class="hljs-keyword">let</span> user = this.borrow(&amp;guard);
+            user.last_name.clone()
+          };
+          <span class="hljs-literal">Ok</span>(cx.string(&amp;last_name).upcast())
+        },
+        <span class="hljs-string">"email"</span> =&gt; {
+          <span class="hljs-keyword">let</span> email = {
+            <span class="hljs-keyword">let</span> guard = cx.lock();
+            <span class="hljs-keyword">let</span> user = this.borrow(&amp;guard);
+            user.email.clone()
+          };
+          <span class="hljs-literal">Ok</span>(cx.string(&amp;email).upcast())
+        },
+        _ =&gt; cx.throw_type_error(<span class="hljs-string">"property does not exist"</span>)
+      }
+    }
+
+    method panic(_) {
+      <span class="hljs-built_in">panic!</span>(<span class="hljs-string">"User.prototype.panic"</span>)
+    }
+  }
+}
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/neon-docs/docs/en/js-object"><span class="arrow-prev">← </span><span>Previous</span></a><a class="docs-next button" href="/neon-docs/docs/en/using-async-tasks"><span>Next</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav docOnPageNav"><ul class="toc-headings"><li><a href="#simple-example">Simple Example</a></li><li><a href="#advanced-example">Advanced Example</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/neon-docs/" class="nav-home"><img src="/neon-docs/img/docusaurus.svg" alt="Neon" width="66" height="58"/></a><div><h5>Docs</h5><a href="/neon-docs/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/neon-docs/docs/en/doc2.html">Guides (or other categories)</a><a href="/neon-docs/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/neon-docs/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/neon-docs/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2018 Amila Welihinda</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: 'bfa6bb4b57d4fa853c0358ee9b195146',
+                indexName: 'amilajack_neon',
+                inputSelector: '#search_input_react'
+              });
+            </script></body></html>

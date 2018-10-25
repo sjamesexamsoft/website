@@ -1,0 +1,146 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Hello World! · Neon</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="This guide will walk you through writing, building, and running your first Neon project. We&#x27;ll try to walk you through each step carefully, but if you want to skip ahead, you can always go straight to the [full demo](https://github.com/neon-bindings/examples/tree/master/guides/hello-world/threading-hint) in the examples repository."/><meta name="docsearch:language" content="pt-BR"/><meta property="og:title" content="Hello World! · Neon"/><meta property="og:type" content="website"/><meta property="og:url" content="https://amilajack.github.io/neon-docs/index.html"/><meta property="og:description" content="This guide will walk you through writing, building, and running your first Neon project. We&#x27;ll try to walk you through each step carefully, but if you want to skip ahead, you can always go straight to the [full demo](https://github.com/neon-bindings/examples/tree/master/guides/hello-world/threading-hint) in the examples repository."/><meta property="og:image" content="https://amilajack.github.io/neon-docs/img/docusaurus.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://amilajack.github.io/neon-docs/img/docusaurus.png"/><link rel="shortcut icon" href="/neon-docs/img/favicon.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://amilajack.github.io/neon-docs/blog/atom.xml" title="Neon Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://amilajack.github.io/neon-docs/blog/feed.xml" title="Neon Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/neon-docs/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/neon-docs/pt-BR"><img class="logo" src="/neon-docs/img/docusaurus.svg" alt="Neon"/><h2 class="headerTitleWithLogo">Neon</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/neon-docs/docs/pt-BR/intro" target="_self">Guides</a></li><li class=""><a href="/neon-docs/pt-BR/help" target="_self">Help</a></li><li class=""><a href="/neon-docs/blog/" target="_self">Blog</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/neon-docs/img/language.svg" alt="Languages icon"/>Português (Brasil)</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/neon-docs/docs/ja/hello-world">日本語</a></li><li><a href="/neon-docs/docs/en/hello-world">English</a></li><li><a href="/neon-docs/docs/es-ES/hello-world">Español</a></li><li><a href="/neon-docs/docs/fr/hello-world">Français</a></li><li><a href="/neon-docs/docs/ko/hello-world">한국어</a></li><li><a href="/neon-docs/docs/ru/hello-world">Русский</a></li><li><a href="/neon-docs/docs/zh-CN/hello-world">中文</a></li><li><a href="/neon-docs/docs/zh-TW/hello-world">繁體中文</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Getting Started</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"></div></section></div><script>
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docMainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Hello World!</h1></header><article><div><span><p>This guide will walk you through writing, building, and running your first Neon project. We'll try to walk you through each step carefully, but if you want to skip ahead, you can always go straight to the <a href="https://github.com/neon-bindings/examples/tree/master/guides/hello-world/threading-hint">full demo</a> in the examples repository.</p>
+<p>Our first project will be a tiny module that returns a number indicating how much hardware multithreading the current machine supports. If you're not familiar with multithreading, don't panic! We'll be using <a href="http://seanmonstar.com/">Sean McArthur</a>'s <a href="https://crates.io/crates/num_cpus">num_cpus</a> library to do all the heavy lifting for us, and we'll just return the number it gives us.</p>
+<p>But even this simple example already demonstrates some of Neon's usefulness: Rust's <a href="https://crates.io/">crate ecosystem</a> is younger than npm but growing quickly and already full of useful and unique libraries. A library like <code>num_cpus</code> could be useful, for example, as a hint for tuning the size of a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers">Web Worker</a> pool in an <a href="../electron-apps/">Electron app</a>.</p>
+<h1><a class="anchor" aria-hidden="true" id="creating-a-new-project"></a><a href="#creating-a-new-project" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Creating a New Project</h1>
+<p>The first thing we have to do is create our new <code>threading-hint</code> Neon project:</p>
+<pre><code class="hljs css language-shell">neon new threading-hint
+</code></pre>
+<p>This will ask us a series of questions similar to the ones asked by <code>npm new</code>. When it completes, the tool will have created a <code>threading-hint</code> directory with the following layout:</p>
+<pre><code class="hljs css language-text">threading-hint/
+├── .gitignore
+├── README.md
+├── lib/
+│   └── index.js
+├── native/
+│   ├── Cargo.toml
+│   └── src/
+│       └── lib.rs
+└── package.json
+</code></pre>
+<p>The first thing to notice about this layout is that <strong>a Neon project is a Node package</strong>. In other words, the way to think of a Neon project is:</p>
+<blockquote>
+<p>Node on the outside, Rust on the inside.</p>
+</blockquote>
+<p>The front-end of a Neon package is a pure JavaScript module (<code>lib/index.js</code>, by default), and the back-end is a native library implemented as a Rust crate. The Rust crate lives in the <code>native/</code> subdirectory of the project.</p>
+<h1><a class="anchor" aria-hidden="true" id="building-and-running"></a><a href="#building-and-running" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Building and Running</h1>
+<p>We haven't yet implemented anything, but just to see that <code>neon new</code> produced a complete, minimal Neon project, let's try building it:</p>
+<pre><code class="hljs css language-shell">neon build
+</code></pre>
+<p>The build process generates a handful of files that you don't need to work with directly:</p>
+<ul>
+<li><code>native/index.node</code>: the native module itself, which is loaded by <code>lib/index.js</code>.</li>
+<li><code>native/target</code> and <code>native/artifacts.json</code>: cached build results, which makes rebuilds faster.</li>
+</ul>
+<p>An easy way to clean up build artifacts is to run:</p>
+<pre><code class="hljs css language-shell">neon clean
+</code></pre>
+<p>Once we've built the project, we can try running it:</p>
+<pre><code class="hljs css language-shell">node
+<span class="hljs-meta">&gt;</span><span class="bash"> require(<span class="hljs-string">'.'</span>)</span>
+hello node
+{}
+</code></pre>
+<h1><a class="anchor" aria-hidden="true" id="adding-a-rust-dependency"></a><a href="#adding-a-rust-dependency" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Adding a Rust Dependency</h1>
+<p>Let's add a Rust dependency on the <a href="https://crates.io/crates/num_cpus">num_cpus</a> crate. In <code>native/Cargo.toml</code>, under the <code>[dependencies]</code> section, add the following line:</p>
+<pre><code class="hljs css language-toml"><span class="hljs-attr">num_cpus</span> = <span class="hljs-string">"1.4.0"</span>
+</code></pre>
+<p>This tells Cargo, Rust's build tool, to fetch a version of the <code>num_cpus</code> crate that is semver-compatible with <code>1.4.0</code>. (The <code>package.json</code> equivalent would be <code>&quot;num_cpus&quot;: &quot;^1.4.0&quot;</code>.)</p>
+<h1><a class="anchor" aria-hidden="true" id="implementing-our-function"></a><a href="#implementing-our-function" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Implementing our Function</h1>
+<p>Now let's edit the Rust code to make use of the new dependency. First we have to declare the use of the the <code>num_cpus</code> crate:</p>
+<pre><code class="hljs css language-rust"><span class="hljs-keyword">extern</span> <span class="hljs-keyword">crate</span> num_cpus;
+</code></pre>
+<p>Next we can replace the sample <code>hello</code> function that was generated by <code>neon new</code> with the function we actually want. Instead of returning a string, our function should return a JavaScript number. So we'll use the <a href="https://api.neon-bindings.com/neon/js/struct.jsnumber#method.new"><code>JsNumber::new()</code></a> API. Since <code>JsNumber</code> expects a Rust <a href="https://doc.rust-lang.org/std/primitive.f64.html"><code>f64</code></a> (i.e., a 64-bit floating-point number), and <a href="https://docs.rs/num_cpus/1.4.0/num_cpus/fn.get.html"><code>num_cpus::get()</code></a> returns a <a href="https://doc.rust-lang.org/std/primitive.usize.html"><code>usize</code></a> (i.e., a pointer-sized integer), we'll use Rust's <code>as</code> operator to cast to convert the integer to floating-point:</p>
+<pre><code class="hljs css language-rust"><span class="hljs-keyword">use</span> neon::js::JsNumber;
+
+<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">threading_hint</span></span>(call: Call) -&gt; JsResult&lt;JsNumber&gt; {
+    <span class="hljs-literal">Ok</span>(JsNumber::new(call.scope, num_cpus::get() <span class="hljs-keyword">as</span> <span class="hljs-built_in">f64</span>))
+}
+</code></pre>
+<p>A few more things to note about this code:</p>
+<ul>
+<li>The <code>call</code> argument to <code>threading_hint</code>: this contains information about the function call, such as the arguments and the value of <code>this</code>.</li>
+<li>The <a href="https://api.neon-bindings.com/neon/vm/type.jsresult"><code>JsResult</code></a> output type: this is a Rust <a href="https://doc.rust-lang.org/std/result/enum.Result.html"><code>Result</code></a> type that indicates whether the function returned (<code>Ok</code>) or threw a JavaScript exception (<code>Err</code>). You can learn more in the <a href="../handling-errors">Handling Errors</a> guide. It also tracks the lifetime of the returned <em>handle</em>. You can read more about handles in the <a href="../handles-and-memory/">Handles and Memory</a> guide.</li>
+<li>The <code>call.scope</code> argument to <code>JsNumber::new()</code>: this tells the JavaScript garbage collector that we need to keep the value we allocate alive long enough to return it to the caller of <code>threading_hint</code>. You can learn more about memory management in the <a href="../handles-and-memory/">Handles and Memory</a> guide.</li>
+</ul>
+<p>Finally, we'll modify the code that <code>neon new</code> created for us to set up the module exports with this function instead of the initial &quot;hello world&quot; function it created for us:</p>
+<pre><code class="hljs css language-rust">register_module!(m, {
+    m.export(<span class="hljs-string">"threading_hint"</span>, threading_hint)
+});
+</code></pre>
+<p>This tells Neon to initialize the module when it's first loaded by creating a JavaScript function implemented with the <code>threading_hint</code> function we defined above and exporting it as a module property named <code>&quot;threading_hint&quot;</code>.</p>
+<p>You can see the full <a href="https://github.com/neon-bindings/examples/blob/master/guides/hello-world/threading-hint/native/src/lib.rs"><code>lib.rs</code></a> file in the examples repository.</p>
+<h1><a class="anchor" aria-hidden="true" id="exporting-our-function"></a><a href="#exporting-our-function" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Exporting our Function</h1>
+<p>Now that the Rust code is implemented, all we have left to do is export it from the project's public module. The native module exported a <code>threading_hint</code> property, so we'll just make that function our entire public module:</p>
+<pre><code class="hljs css language-js"><span class="hljs-keyword">var</span> addon = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../native'</span>);
+
+<span class="hljs-built_in">module</span>.exports = addon.threading_hint;
+</code></pre>
+<h1><a class="anchor" aria-hidden="true" id="try-it-out"></a><a href="#try-it-out" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Try it Out!</h1>
+<p>Now we should be able to rebuild the project with <code>neon build</code> again:</p>
+<pre><code class="hljs css language-shell">neon build
+</code></pre>
+<p>This will create a release build for us. Assuming we didn't make any mistakes, we can test out our new Neon module at the Node console:</p>
+<pre><code class="hljs css language-shell">node
+<span class="hljs-meta">&gt;</span><span class="bash"> var threadingHint = require(<span class="hljs-string">'.'</span>)</span>
+<span class="hljs-meta">&gt;</span><span class="bash"> threadingHint()</span>
+4
+</code></pre>
+<p>Keep in mind that the result of calling <code>threadingHint()</code> will vary based on the machine you run this demo on—by design!</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/neon-docs/docs/pt-BR/getting-started"><span class="arrow-prev">← </span><span>Previous</span></a><a class="docs-next button" href="/neon-docs/docs/pt-BR/electron-apps"><span>Next</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav docOnPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/neon-docs/" class="nav-home"><img src="/neon-docs/img/docusaurus.svg" alt="Neon" width="66" height="58"/></a><div><h5>Docs</h5><a href="/neon-docs/docs/pt-BR/doc1.html">Getting Started (or other categories)</a><a href="/neon-docs/docs/pt-BR/doc2.html">Guides (or other categories)</a><a href="/neon-docs/docs/pt-BR/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/neon-docs/pt-BR/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/neon-docs/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2018 Amila Welihinda</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: 'bfa6bb4b57d4fa853c0358ee9b195146',
+                indexName: 'amilajack_neon',
+                inputSelector: '#search_input_react'
+              });
+            </script></body></html>
