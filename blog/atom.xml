@@ -6,7 +6,7 @@
     <generator>Feed for Node.js</generator>
     <link rel="alternate" href="https://amilajack.github.io/neon-docs/blog"/>
     <subtitle>The best place to stay up-to-date with the latest Neon news and events.</subtitle>
-    <logo>https://amilajack.github.io/neon-docs/img/docusaurus.svg</logo>
+    <logo>https://amilajack.github.io/neon-docs/logo/text-logo.svg</logo>
     <rights>Copyright © 2018 Amila Welihinda</rights>
     <entry>
         <title type="html"><![CDATA[Hello World!]]></title>
