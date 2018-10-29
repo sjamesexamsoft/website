@@ -1,0 +1,111 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Getting Started · Neon</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="This guide will help you get your system set up for building Neon projects. If you already have everything installed and are looking to write your first Neon code, try the [Hello, World!](/neon-docs/docs/en/next/hello-world) guide."/><meta name="docsearch:version" content="next"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Getting Started · Neon"/><meta property="og:type" content="website"/><meta property="og:url" content="https://amilajack.github.io/neon-docs/index.html"/><meta property="og:description" content="This guide will help you get your system set up for building Neon projects. If you already have everything installed and are looking to write your first Neon code, try the [Hello, World!](/neon-docs/docs/en/next/hello-world) guide."/><meta property="og:image" content="https://amilajack.github.io/neon-docs/logo/text-logo.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://amilajack.github.io/neon-docs/logo/text-logo.svg"/><link rel="shortcut icon" href="/neon-docs/logo/letter-logo.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css"/><link rel="alternate" type="application/atom+xml" href="https://amilajack.github.io/neon-docs/blog/atom.xml" title="Neon Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://amilajack.github.io/neon-docs/blog/feed.xml" title="Neon Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/neon-docs/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/neon-docs/en"><img class="logo" src="/neon-docs/logo/text-logo.svg" alt="Neon"/></a><a href="/neon-docs/en/versions"><h3>next</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/neon-docs/docs/en/next/intro" target="_self">Docs</a></li><li class="siteNavGroupActive"><a href="/neon-docs/docs/en/next/roadmap" target="_self">Roadmap</a></li><li class="siteNavGroupActive"><a href="/neon-docs/docs/en/next/community-content" target="_self">Resources</a></li><li class=""><a href="/neon-docs/docs/en/next/demos" target="_self">Demos</a></li><li class=""><a href="/neon-docs/blog/" target="_self">Blog</a></li><li class=""><a href="/neon-docs/en/help" target="_self">Help</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/neon-docs/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/neon-docs/docs/ja/next/getting-started">日本語</a></li><li><a href="/neon-docs/docs/es-ES/next/getting-started">Español</a></li><li><a href="/neon-docs/docs/fr/next/getting-started">Français</a></li><li><a href="/neon-docs/docs/ko/next/getting-started">한국어</a></li><li><a href="/neon-docs/docs/pt-BR/next/getting-started">Português (Brasil)</a></li><li><a href="/neon-docs/docs/ru/next/getting-started">Русский</a></li><li><a href="/neon-docs/docs/zh-CN/next/getting-started">中文</a></li><li><a href="/neon-docs/docs/zh-TW/next/getting-started">繁體中文</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Getting Started</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Getting Started</h3><ul><li class="navListItem"><a class="navItem" href="/neon-docs/docs/en/next/intro">Introduction</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/neon-docs/docs/en/next/getting-started">Getting Started</a></li><li class="navListItem"><a class="navItem" href="/neon-docs/docs/en/next/hello-world">Hello World!</a></li><li class="navListItem"><a class="navItem" href="/neon-docs/docs/en/next/electron-apps">Electron Apps</a></li><li class="navListItem"><a class="navItem" href="/neon-docs/docs/en/next/cli">CLI</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Basics</h3><ul><li class="navListItem"><a class="navItem" href="/neon-docs/docs/en/next/js-primitives">Primitives</a></li><li class="navListItem"><a class="navItem" href="/neon-docs/docs/en/next/js-array">Arrays</a></li><li class="navListItem"><a class="navItem" href="/neon-docs/docs/en/next/js-object">Objects</a></li><li class="navListItem"><a class="navItem" href="/neon-docs/docs/en/next/arguments">Arguments</a></li><li class="navListItem"><a class="navItem" href="/neon-docs/docs/en/next/using-js-class-macros">Classes</a></li><li class="navListItem"><a class="navItem" href="/neon-docs/docs/en/next/functions">Functions</a></li><li class="navListItem"><a class="navItem" href="/neon-docs/docs/en/next/json">JSON</a></li><li class="navListItem"><a class="navItem" href="/neon-docs/docs/en/next/using-async-tasks">Async Tasks</a></li><li class="navListItem"><a class="navItem" href="/neon-docs/docs/en/next/parallelism">Parallelism</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Guides</h3><ul><li class="navListItem"><a class="navItem" href="/neon-docs/docs/en/next/word-counting-guide">Word Counting</a></li><li class="navListItem"><a class="navItem" href="/neon-docs/docs/en/next/sdl2-guide">SDL2 Bindings</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Misc</h3><ul><li class="navListItem"><a class="navItem" href="/neon-docs/docs/en/next/roadmap">Roadmap</a></li><li class="navListItem"><a class="navItem" href="/neon-docs/docs/en/next/example-projects">Who&#x27;s Using Neon</a></li><li class="navListItem"><a class="navItem" href="/neon-docs/docs/en/next/community-content">Community Content</a></li></ul></div></div></section></div><script>
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docMainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Getting Started</h1></header><article><div><span><p>This guide will help you get your system set up for building Neon projects. If you already have everything installed and are looking to write your first Neon code, try the <a href="/neon-docs/docs/en/next/hello-world">Hello, World!</a> guide.</p>
+<h2><a class="anchor" aria-hidden="true" id="install-node"></a><a href="#install-node" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Install Node</h2>
+<p>Neon requires Node.js and supports <strong>all versions since the most recent LTS release</strong>. If you don't already have Node.js installed, or don't have a supported version, go to the <a href="https://nodejs.org/">Node.js web site</a> for installation instructions.</p>
+<h2><a class="anchor" aria-hidden="true" id="install-rust"></a><a href="#install-rust" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Install Rust</h2>
+<p>Neon requires Rust for development and supports <strong>all versions of Rust since 1.15</strong>. If you don't already have Rust installed, or don't have a supported version, go to the <a href="https://www.rust-lang.org/install.html">Rust web site</a> for installation instructions.</p>
+<h2><a class="anchor" aria-hidden="true" id="install-node-build-tools"></a><a href="#install-node-build-tools" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Install Node Build Tools</h2>
+<p>Neon depends on Node's plugin build tools, which have a few additional system requirements. These dependencies have different installation steps on different operating systems.</p>
+<h3><a class="anchor" aria-hidden="true" id="macos"></a><a href="#macos" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>macOS</h3>
+<p>The development dependencies for macOS are:</p>
+<ul>
+<li>Python 2.7 (Python 3 is <strong>not</strong> supported)</li>
+<li><a href="https://developer.apple.com/xcode/download/">Xcode</a></li>
+<li>Install the <em>Command Line Tools</em> via Xcode under the menu <em>Xcode → Preferences → Downloads</em>.</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="windows"></a><a href="#windows" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Windows</h3>
+<p>The easiest and recommended way to set up a Windows development environment is with the <code>windows-build-tools</code> package. In a PowerShell or command prompt run as Administrator, run the following step:</p>
+<pre><code class="hljs css language-powershell">C:\&gt; npm install --global --production windows-build-tools
+</code></pre>
+<p>This installs all the system dependencies unobtrusively, without conflicting with any software already installed on your system.</p>
+<h4><a class="anchor" aria-hidden="true" id="advanced-manual-setup"></a><a href="#advanced-manual-setup" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Advanced: Manual setup</h4>
+<p>Alternatively, you can set up the Windows development environment manually instead of using <code>windows-build-tools</code>. <strong>You do not need to do this if you used the recommended setup process above.</strong></p>
+<ul>
+<li>On Windows Vista or Windows 7, install the <a href="http://www.microsoft.com/en-us/download/details.aspx?id=40773">.NET Framework 4.5.1</a>.</li>
+<li>Install the Visual C++ Build Environment with one of the following options:
+<ol>
+<li>Install the <a href="http://landinghub.visualstudio.com/visual-cpp-build-tools">Visual C++ Build Tools</a> using the <em>Default Install</em> option.</li>
+<li>Install <a href="https://www.visualstudio.com/products/visual-studio-community-vs">Visual Studio</a> (or modify an existing installation) and select <em>Common Tools for Visual C++</em> during setup.</li>
+</ol></li>
+<li>Install <a href="https://www.python.org/downloads/">Python 2.7</a> (Python 3 is <strong>not</strong> supported).</li>
+<li>Run the following commands:</li>
+</ul>
+<pre><code class="hljs css language-powershell">C:\&gt; npm config set python python2.<span class="hljs-number">7</span>
+C:\&gt; npm config set msvs_version <span class="hljs-number">2015</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="generic"></a><a href="#generic" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Generic</h3>
+<p>The generic Unix development dependencies are:</p>
+<ul>
+<li>Python 2.7 (Python 3 is <strong>not</strong> supported)</li>
+<li><code>make</code></li>
+<li>A proper C/C++ compiler toolchain, like <a href="https://gcc.gnu.org/">GCC</a></li>
+</ul>
+<p>Most modern Unix systems, like Linux or FreeBSD, should have the required development dependencies installed already.</p>
+<h2><a class="anchor" aria-hidden="true" id="install-the-neon-cli"></a><a href="#install-the-neon-cli" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Install the Neon CLI</h2>
+<p>Finally, use <code>npm</code> to install the Neon command-line toolchain.</p>
+<pre><code class="hljs css language-bash">npm install --global neon-cli
+<span class="hljs-comment"># OR</span>
+yarn global add neon-cli
+</code></pre>
+<p>You can verify your Neon installation by running</p>
+<pre><code class="hljs css language-bash">neon version
+</code></pre>
+<p>from a shell, which should print out the version of Neon you just installed.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/neon-docs/docs/en/next/intro"><span class="arrow-prev">← </span><span>Previous</span></a><a class="docs-next button" href="/neon-docs/docs/en/next/hello-world"><span>Next</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav docOnPageNav"><ul class="toc-headings"><li><a href="#install-node">Install Node</a></li><li><a href="#install-rust">Install Rust</a></li><li><a href="#install-node-build-tools">Install Node Build Tools</a><ul class="toc-headings"><li><a href="#macos">macOS</a></li><li><a href="#windows">Windows</a></li><li><a href="#generic">Generic</a></li></ul></li><li><a href="#install-the-neon-cli">Install the Neon CLI</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/neon-docs/" class="nav-home"><img src="/neon-docs/logo/text-logo.svg" alt="Neon" width="66" height="58"/></a><div><h5>Docs</h5><a href="/neon-docs/docs/en/getting-started.html">Getting Started</a><a href="/neon-docs/docs/en/word-counting-guide.html">Guides</a><a href="https://api.neon-bindings.com/neon/index.html" target="_blank">API Reference</a></div><div><h5>Community</h5><a href="https://rust-bindings-slackin.herokuapp.com/">Project Chat</a><a href="https://twitter.com/rustneon" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/neon-docs/blog">Blog</a><a href="https://github.com/neon-bindings/neon">GitHub</a><a class="github-button" href="https://github.com/neon-bindings/neon" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2018 Amila Welihinda</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: 'bfa6bb4b57d4fa853c0358ee9b195146',
+                indexName: 'amilajack_neon',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en","version:next"]}
+              });
+            </script></body></html>
