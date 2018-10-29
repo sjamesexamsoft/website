@@ -126,11 +126,11 @@ method askQuestion(<span class="hljs-keyword">mut</span> cx) {
 <p>Then you can use instances of this type in JS just like any other object:</p>
 <pre><code class="hljs css language-js"><span class="hljs-keyword">const</span> { Employee } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../native'</span>);
 
-<span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">new</span> addon.Employee()) <span class="hljs-comment">// fails: TypeError: not enough arguments</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">new</span> addon.Employee()); <span class="hljs-comment">// fails: TypeError: not enough arguments</span>
 
-<span class="hljs-keyword">const</span> john = <span class="hljs-keyword">new</span> addon.Employee(<span class="hljs-string">'John'</span>)
-john.name();        <span class="hljs-comment">// John</span>
-john.greet();       <span class="hljs-comment">// Hi John!</span>
+<span class="hljs-keyword">const</span> john = <span class="hljs-keyword">new</span> addon.Employee(<span class="hljs-string">'John'</span>);
+john.name(); <span class="hljs-comment">// John</span>
+john.greet(); <span class="hljs-comment">// Hi John!</span>
 john.askQuestion(); <span class="hljs-comment">// How are you?</span>
 </code></pre>
 <p>Since the methods on <code>Employee</code> expect this to have the right binary layout, they check to make sure that they aren’t being called on an inappropriate object type. This means you can’t segfault Node by doing something like:</p>
@@ -180,9 +180,9 @@ method introduce(<span class="hljs-keyword">mut</span> cx) {
 </code></pre>
 <pre><code class="hljs css language-js"><span class="hljs-keyword">const</span> addon = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../native'</span>);
 
-<span class="hljs-keyword">const</span> john = <span class="hljs-keyword">new</span> addon.Employee(<span class="hljs-number">0</span>, <span class="hljs-string">"Lisa"</span>);
-john.introduce(<span class="hljs-string">"Mary"</span>); <span class="hljs-comment">// Hi, this is Mary</span>
-john.introduce(<span class="hljs-number">12</span>);     <span class="hljs-comment">// Her birthday is on the 12th</span>
+<span class="hljs-keyword">const</span> john = <span class="hljs-keyword">new</span> addon.Employee(<span class="hljs-number">0</span>, <span class="hljs-string">'Lisa'</span>);
+john.introduce(<span class="hljs-string">'Mary'</span>); <span class="hljs-comment">// Hi, this is Mary</span>
+john.introduce(<span class="hljs-number">12</span>); <span class="hljs-comment">// Her birthday is on the 12th</span>
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" id="advanced-example"></a><a href="#advanced-example" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Advanced Example</h2>
 <pre><code class="hljs css language-rust"><span class="hljs-keyword">use</span> neon::prelude::*;
@@ -262,7 +262,6 @@ declare_types! {
 register_module!(<span class="hljs-keyword">mut</span> cx, {
     cx.export_class::&lt;JsUser&gt;(<span class="hljs-string">"User"</span>)
 });
-
 </code></pre>
 </span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/neon-docs/docs/en/arguments"><span class="arrow-prev">← </span><span>Previous</span></a><a class="docs-next button" href="/neon-docs/docs/en/functions"><span>Next</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav docOnPageNav"><ul class="toc-headings"><li><a href="#basics">Basics</a><ul class="toc-headings"><li><a href="#defining-the-constructor">Defining the <code>constructor</code></a></li><li><a href="#adding-methods">Adding Methods</a></li><li><a href="#getting-and-setting-class-properties">Getting and Setting Class Properties</a></li><li><a href="#handling-methods-that-take-multiple-types">Handling Methods That Take Multiple Types</a></li></ul></li><li><a href="#advanced-example">Advanced Example</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/neon-docs/" class="nav-home"><img src="/neon-docs/logo/text-logo.svg" alt="Neon" width="66" height="58"/></a><div><h5>Docs</h5><a href="/neon-docs/docs/en/getting-started.html">Getting Started</a><a href="/neon-docs/docs/en/word-counting-guide.html">Guides</a><a href="https://api.neon-bindings.com/neon/index.html" target="_blank">API Reference</a></div><div><h5>Community</h5><a href="https://rust-bindings-slackin.herokuapp.com/">Project Chat</a><a href="https://twitter.com/rustneon" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/neon-docs/blog">Blog</a><a href="https://github.com/neon-bindings/neon">GitHub</a><a class="github-button" href="https://github.com/neon-bindings/neon" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2018 Amila Welihinda</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
                 document.addEventListener('keyup', function(e) {

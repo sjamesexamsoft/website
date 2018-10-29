@@ -98,9 +98,9 @@ total <span class="hljs-comment">// in Rust you can omit `return` for a trailing
 </code></pre>
 <p>The vm::lock API lets Neon safely expose the raw bytes of a Node Buffer object (i.e., a typed array) to Rust threads, by preventing JS from running in the meantime. And Rust’s concurrency model makes programming with threads actually fun.</p>
 <p>To demonstrate how easy this can be, I used Niko Matsakis’s new Rayon crate of beautiful data parallelism abstractions. Changing the demo to use Rayon is as simple as replacing the into_iter/map/fold/ lines above with:</p>
-<pre><code class="hljs css language-diff">    lines.into_par_iter()
-<span class="hljs-addition">+       .map(|line| wc_line(line, search))</span>
-        .sum()
+<pre><code class="hljs css language-diff"><span class="hljs-addition">+   lines.into_par_iter()</span>
+      .map(|line| wc_line(line, search))
+      .sum()
 </code></pre>
 <p>Keep in mind, Rayon wasn’t designed with Neon in mind—its generic primitives match the iteration protocols of Rust, so Neon was able to just pull it off the shelf.</p>
 <p>With that simple change, on my two-core MacBook Air, the demo goes from about 85ms down to about 50ms.</p>

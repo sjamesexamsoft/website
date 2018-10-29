@@ -118,21 +118,21 @@ register_module!(<span class="hljs-keyword">mut</span> cx, {
 <span class="hljs-keyword">const</span> { Canvas } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../native'</span>);
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sleep</span>(<span class="hljs-params">n</span>) </span>{
-    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-params">resolve</span> =&gt;</span> setTimeout(resolve, n));
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-params">resolve</span> =&gt;</span> setTimeout(resolve, n));
 }
 
 <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">run</span>(<span class="hljs-params"></span>) </span>{
-    <span class="hljs-keyword">const</span> canvas = <span class="hljs-keyword">new</span> Canvas();
+  <span class="hljs-keyword">const</span> canvas = <span class="hljs-keyword">new</span> Canvas();
 
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">1000</span>; i++) {
-        <span class="hljs-keyword">const</span> m = i % <span class="hljs-number">255</span>;
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">1000</span>; i++) {
+    <span class="hljs-keyword">const</span> m = i % <span class="hljs-number">255</span>;
 
-        canvas.set_draw_color(m, <span class="hljs-number">64</span>, <span class="hljs-number">255</span> - m);
-        canvas.clear();
-        canvas.present();
+    canvas.set_draw_color(m, <span class="hljs-number">64</span>, <span class="hljs-number">255</span> - m);
+    canvas.clear();
+    canvas.present();
 
-        <span class="hljs-keyword">await</span> sleep(<span class="hljs-number">10</span>);
-    }
+    <span class="hljs-keyword">await</span> sleep(<span class="hljs-number">10</span>);
+  }
 }
 
 run();
