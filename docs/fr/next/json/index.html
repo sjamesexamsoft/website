@@ -1,0 +1,181 @@
+<!DOCTYPE html><html lang="fr"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>JSON · Neon</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Sometimes you just want to convert a struct in Rust to a `JsObject` and back. This can be done with [neon-serde](https://github.com/GabrielCastro/neon-serde). You will need to install the `neon-serde` and `serde_derive` crates."/><meta name="docsearch:version" content="next"/><meta name="docsearch:language" content="fr"/><meta property="og:title" content="JSON · Neon"/><meta property="og:type" content="website"/><meta property="og:url" content="https://amilajack.github.io/neon-docs/index.html"/><meta property="og:description" content="Sometimes you just want to convert a struct in Rust to a `JsObject` and back. This can be done with [neon-serde](https://github.com/GabrielCastro/neon-serde). You will need to install the `neon-serde` and `serde_derive` crates."/><meta property="og:image" content="https://amilajack.github.io/neon-docs/logo/text-logo.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://amilajack.github.io/neon-docs/logo/text-logo.svg"/><link rel="shortcut icon" href="/neon-docs/logo/letter-logo.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css"/><link rel="alternate" type="application/atom+xml" href="https://amilajack.github.io/neon-docs/blog/atom.xml" title="Neon Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://amilajack.github.io/neon-docs/blog/feed.xml" title="Neon Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/neon-docs/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/neon-docs/fr"><img class="logo" src="/neon-docs/logo/text-logo.svg" alt="Neon"/></a><a href="/neon-docs/fr/versions"><h3>next</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/neon-docs/docs/fr/next/intro" target="_self">Docs</a></li><li class="siteNavGroupActive"><a href="/neon-docs/docs/fr/next/roadmap" target="_self">Roadmap</a></li><li class="siteNavGroupActive"><a href="/neon-docs/docs/fr/next/community-content" target="_self">Resources</a></li><li class=""><a href="/neon-docs/docs/fr/next/demos" target="_self">Demos</a></li><li class=""><a href="/neon-docs/blog/" target="_self">Blog</a></li><li class=""><a href="/neon-docs/fr/help" target="_self">Help</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/neon-docs/img/language.svg" alt="Languages icon"/>Français</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/neon-docs/docs/ja/next/json">日本語</a></li><li><a href="/neon-docs/docs/en/next/json">English</a></li><li><a href="/neon-docs/docs/es-ES/next/json">Español</a></li><li><a href="/neon-docs/docs/ko/next/json">한국어</a></li><li><a href="/neon-docs/docs/pt-BR/next/json">Português (Brasil)</a></li><li><a href="/neon-docs/docs/ru/next/json">Русский</a></li><li><a href="/neon-docs/docs/zh-CN/next/json">中文</a></li><li><a href="/neon-docs/docs/zh-TW/next/json">繁體中文</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Basics</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"></div></section></div><script>
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docMainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">JSON</h1></header><article><div><span><p>Sometimes you just want to convert a struct in Rust to a <code>JsObject</code> and back. This can be done with <a href="https://github.com/GabrielCastro/neon-serde">neon-serde</a>. You will need to install the <code>neon-serde</code> and <code>serde_derive</code> crates.</p>
+<p>For more docs on the <code>neon-serde</code> crate, please see its <a href="https://github.com/GabrielCastro/neon-serde">repo</a> and <a href="https://docs.rs/crate/neon-serde/0.0.3">docs</a></p>
+<p>First we install the following crates:</p>
+<pre><code class="hljs css language-toml"><span class="hljs-comment"># Cargo.toml</span>
+<span class="hljs-comment"># --snip--</span>
+<span class="hljs-section">[dependencies]</span>
+<span class="hljs-attr">neon</span> = <span class="hljs-string">"0.2.0"</span>
+<span class="hljs-attr">neon-serde</span> = { git = <span class="hljs-string">"https://github.com/GabrielCastro/neon-serde"</span> }
+<span class="hljs-attr">serde_derive</span> = <span class="hljs-string">"1.0.80"</span>
+<span class="hljs-attr">serde</span> = <span class="hljs-string">"1.0.80"</span>
+</code></pre>
+<p>Then import the necessary libraries and declare a <code>User</code> struct that is marked as deserializable with <a href="https://github.com/serde-rs/serde">serde</a>:</p>
+<pre><code class="hljs css language-rust"><span class="hljs-meta">#[macro_use]</span>
+<span class="hljs-keyword">extern</span> <span class="hljs-keyword">crate</span> neon;
+<span class="hljs-meta">#[macro_use]</span>
+<span class="hljs-keyword">extern</span> <span class="hljs-keyword">crate</span> neon_serde;
+<span class="hljs-meta">#[macro_use]</span>
+<span class="hljs-keyword">extern</span> <span class="hljs-keyword">crate</span> serde_derive;
+
+<span class="hljs-meta">#[derive(Serialize)]</span>
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">User</span></span> {
+    name: <span class="hljs-built_in">String</span>,
+    age: <span class="hljs-built_in">u16</span>,
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="serializing"></a><a href="#serializing" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Serializing</h2>
+<p>We can serialize a Rust struct and convert it to a <code>JsValue</code> like so:</p>
+<pre><code class="hljs css language-rust"><span class="hljs-comment">// --snip--</span>
+<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">serialize_something</span></span>(<span class="hljs-keyword">mut</span> cx: FunctionContext) -&gt; JsResult&lt;JsValue&gt; {
+    <span class="hljs-keyword">let</span> value = AnObject {
+        a: <span class="hljs-number">1</span>,
+        b: <span class="hljs-built_in">vec!</span>[<span class="hljs-number">2f64</span>, <span class="hljs-number">3f64</span>, <span class="hljs-number">4f64</span>],
+        c: <span class="hljs-string">"a string"</span>.into()
+    };
+
+    <span class="hljs-keyword">let</span> js_value = neon_serde::to_value(&amp;<span class="hljs-keyword">mut</span> cx, &amp;value)?;
+    <span class="hljs-literal">Ok</span>(js_value)
+}
+
+register_module!(<span class="hljs-keyword">mut</span> cx, {
+    cx.export_function(<span class="hljs-string">"serialize_something"</span>, serialize_something)
+});
+</code></pre>
+<p>In your <code>./lib/index.js</code> you can call your function like so:</p>
+<pre><code class="hljs css language-js"><span class="hljs-keyword">const</span> addon = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../native'</span>);
+addon.serialize_something();
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="deserializing"></a><a href="#deserializing" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Deserializing</h2>
+<p>We need to change the <code>User</code> trait to be deserializable as well:</p>
+<pre><code class="hljs css language-rust"><span class="hljs-comment">// --snip--</span>
+<span class="hljs-meta">#[derive(Serialize, Deserialize)]</span>
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">User</span></span> {
+    name: <span class="hljs-built_in">String</span>,
+    age: <span class="hljs-built_in">u16</span>,
+}
+<span class="hljs-comment">// --snip--</span>
+</code></pre>
+<p>Now we can also deserialize a <code>JsObject</code> struct and convert it to a <code>JsValue</code> like so:</p>
+<pre><code class="hljs css language-rust"><span class="hljs-comment">// --snip--</span>
+<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">deserialize_something</span></span>(<span class="hljs-keyword">mut</span> cx: FunctionContext) -&gt; JsResult&lt;JsValue&gt; {
+    <span class="hljs-keyword">let</span> arg0 = cx.argument::&lt;JsValue&gt;(<span class="hljs-number">0</span>)?;
+
+    <span class="hljs-keyword">let</span> arg0_value: AnObject = neon_serde::from_value(&amp;<span class="hljs-keyword">mut</span> cx, arg0)?;
+    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{:?}"</span>, arg0_value);
+
+    <span class="hljs-literal">Ok</span>(cx.undefined().upcast())
+}
+
+register_module!(<span class="hljs-keyword">mut</span> cx, {
+    cx.export_function(<span class="hljs-string">"serialize_something"</span>, serialize_something)?;
+    cx.export_function(<span class="hljs-string">"deserialize_something"</span>, deserialize_something)?;
+    <span class="hljs-literal">Ok</span>(())
+});
+</code></pre>
+<p>In your <code>./lib/index.js</code> you can call your function like so:</p>
+<pre><code class="hljs css language-js"><span class="hljs-keyword">const</span> addon = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../native'</span>);
+addon.deserialize_something();
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="macros"></a><a href="#macros" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Macros</h2>
+<p><code>neon-serde</code> provides some macros for simplifying some of the type signatures of functions. It also handles exporting our functions so we don't have to use the <code>register_module!</code> macro manually.</p>
+<pre><code class="hljs css language-rs"><span class="hljs-meta">#[macro_use]</span>
+<span class="hljs-keyword">extern</span> <span class="hljs-keyword">crate</span> neon;
+<span class="hljs-meta">#[macro_use]</span>
+<span class="hljs-keyword">extern</span> <span class="hljs-keyword">crate</span> neon_serde;
+<span class="hljs-meta">#[macro_use]</span>
+<span class="hljs-keyword">extern</span> <span class="hljs-keyword">crate</span> serde_derive;
+
+export! {
+    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">say_hello</span></span>(name: <span class="hljs-built_in">String</span>) -&gt; <span class="hljs-built_in">String</span> {
+        <span class="hljs-built_in">format!</span>(<span class="hljs-string">"Hello, {}!"</span>, name)
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">greet</span></span>(user: User) -&gt; <span class="hljs-built_in">String</span> {
+        <span class="hljs-built_in">format!</span>(<span class="hljs-string">"{} is {} years old"</span>, user.name, user.age)
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">fibonacci</span></span>(n: <span class="hljs-built_in">i32</span>) -&gt; <span class="hljs-built_in">i32</span> {
+        <span class="hljs-keyword">match</span> n {
+            <span class="hljs-number">1</span> | <span class="hljs-number">2</span> =&gt; <span class="hljs-number">1</span>,
+            n =&gt; fibonacci(n - <span class="hljs-number">1</span>) + fibonacci(n - <span class="hljs-number">2</span>)
+        }
+    }
+}
+</code></pre>
+<p>In our JS we simply import the methods and call the functions. Note that type checks are written for us by the macro:</p>
+<pre><code class="hljs css language-js"><span class="hljs-keyword">const</span> addon = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../native'</span>);
+
+<span class="hljs-comment">// Calling the function with incorrect arguments will fail</span>
+<span class="hljs-comment">// console.log(addon.say_hello());</span>
+<span class="hljs-comment">// fails: TypeError: not enough arguments</span>
+
+<span class="hljs-built_in">console</span>.log(addon.say_hello(<span class="hljs-string">'john'</span>));
+<span class="hljs-comment">// Hello, john!</span>
+
+<span class="hljs-comment">// Calling the function with incorrect arguments will fail</span>
+<span class="hljs-comment">// console.log(addon.greet({ name: "afsd" }));</span>
+<span class="hljs-comment">// Error(Msg("missing field `age`"), State { next_error: None, backtrace: None })</span>
+
+<span class="hljs-built_in">console</span>.log(addon.fibonacci(<span class="hljs-number">32</span>));
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="example"></a><a href="#example" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Example</h2>
+<p>See the <a href="https://github.com/amilajack/neon-serde-example">neon-serde-example</a> for a runnable example</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/neon-docs/docs/fr/next/functions"><span class="arrow-prev">← </span><span>Previous</span></a><a class="docs-next button" href="/neon-docs/docs/fr/next/using-async-tasks"><span>Next</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav docOnPageNav"><ul class="toc-headings"><li><a href="#serializing">Serializing</a></li><li><a href="#deserializing">Deserializing</a></li><li><a href="#macros">Macros</a></li><li><a href="#example">Example</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/neon-docs/" class="nav-home"><img src="/neon-docs/logo/text-logo.svg" alt="Neon" width="66" height="58"/></a><div><h5>Docs</h5><a href="/neon-docs/docs/fr/getting-started.html">Getting Started</a><a href="/neon-docs/docs/fr/word-counting-guide.html">Guides</a><a href="https://api.neon-bindings.com/neon/index.html" target="_blank">API Reference</a></div><div><h5>Community</h5><a href="https://rust-bindings-slackin.herokuapp.com/">Project Chat</a><a href="https://twitter.com/rustneon" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/neon-docs/blog">Blog</a><a href="https://github.com/neon-bindings/neon">GitHub</a><a class="github-button" href="https://github.com/neon-bindings/neon" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2018 Amila Welihinda</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: 'bfa6bb4b57d4fa853c0358ee9b195146',
+                indexName: 'amilajack_neon',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:fr","version:next"]}
+              });
+            </script></body></html>

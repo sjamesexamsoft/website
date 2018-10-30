@@ -41,7 +41,7 @@
 <p>First start by creating a new project with <code>neon-cli</code>:</p>
 <pre><code class="hljs css language-bash">neon new hello
 <span class="hljs-built_in">cd</span> hello
-npm install <span class="hljs-comment"># Or yarn install</span>
+npm install <span class="hljs-comment"># OR `yarn install`</span>
 node -e <span class="hljs-string">'require("./")'</span>
 </code></pre>
 <p>When installing the dependencies, npm will automatically run <code>neon build</code> and build a release build of our code in <code>./native</code>.</p>
@@ -98,21 +98,20 @@ total <span class="hljs-comment">// in Rust you can omit `return` for a trailing
 </code></pre>
 <p>The vm::lock API lets Neon safely expose the raw bytes of a Node Buffer object (i.e., a typed array) to Rust threads, by preventing JS from running in the meantime. And Rust’s concurrency model makes programming with threads actually fun.</p>
 <p>To demonstrate how easy this can be, I used Niko Matsakis’s new Rayon crate of beautiful data parallelism abstractions. Changing the demo to use Rayon is as simple as replacing the into_iter/map/fold/ lines above with:</p>
-<pre><code class="hljs css language-rust">lines.into_par_iter()
-     .map(|line| wc_line(line, search))
-     .sum()
+<pre><code class="hljs css language-diff"><span class="hljs-addition">+   lines.into_par_iter()</span>
+      .map(|line| wc_line(line, search))
+      .sum()
 </code></pre>
 <p>Keep in mind, Rayon wasn’t designed with Neon in mind—its generic primitives match the iteration protocols of Rust, so Neon was able to just pull it off the shelf.</p>
 <p>With that simple change, on my two-core MacBook Air, the demo goes from about 85ms down to about 50ms.</p>
 <h2><a class="anchor" aria-hidden="true" id="bridge-most-valiantly-with-excellent-discipline"></a><a href="#bridge-most-valiantly-with-excellent-discipline" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Bridge Most Valiantly, with Excellent Discipline</h2>
 <p>I’ve worked on making the integration as seamless as possible. From the Rust side, Neon functions follow a simple protocol, taking a Call object and returning a JavaScript value:</p>
-<pre><code class="hljs css language-rust"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">search</span></span>(call: Call) -&gt; JS&lt;Integer&gt; {
-    <span class="hljs-keyword">let</span> scope = call.scope;
+<pre><code class="hljs css language-rust"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">search</span></span>(cx: Call) -&gt; JS&lt;Integer&gt; {
     <span class="hljs-comment">// ...</span>
-    <span class="hljs-literal">Ok</span>(Integer::new(scope, total))
+    <span class="hljs-literal">Ok</span>(cx.number(total))
 }
 </code></pre>
-<p>The scope object safely tracks handles into V8’s garbage-collected heap. The Neon API uses the Rust type system to guarantee that your native module can’t crash your app by mismanaging object handles.</p>
+<p><code>cx</code>, a <code>Call</code> struct, safely tracks handles into V8’s garbage-collected heap. The Neon API uses the Rust type system to guarantee that your native module can’t crash your app by mismanaging object handles.</p>
 <p>From the JS side, loading the native module is straightforward:</p>
 <pre><code class="hljs css language-js"><span class="hljs-keyword">const</span> myNeonModule = <span class="hljs-built_in">require</span>(<span class="hljs-string">'neon-bridge'</span>).load();
 </code></pre>

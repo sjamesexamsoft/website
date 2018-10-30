@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="ko"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Using Async Tasks (WIP) · Neon</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="**This doc is currently a work in progress**"/><meta name="docsearch:version" content="next"/><meta name="docsearch:language" content="ko"/><meta property="og:title" content="Using Async Tasks (WIP) · Neon"/><meta property="og:type" content="website"/><meta property="og:url" content="https://amilajack.github.io/neon-docs/index.html"/><meta property="og:description" content="**This doc is currently a work in progress**"/><meta property="og:image" content="https://amilajack.github.io/neon-docs/logo/text-logo.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://amilajack.github.io/neon-docs/logo/text-logo.svg"/><link rel="shortcut icon" href="/neon-docs/logo/letter-logo.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css"/><link rel="alternate" type="application/atom+xml" href="https://amilajack.github.io/neon-docs/blog/atom.xml" title="Neon Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://amilajack.github.io/neon-docs/blog/feed.xml" title="Neon Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/neon-docs/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/neon-docs/ko"><img class="logo" src="/neon-docs/logo/text-logo.svg" alt="Neon"/></a><a href="/neon-docs/ko/versions"><h3>next</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/neon-docs/docs/ko/next/intro" target="_self">Docs</a></li><li class="siteNavGroupActive"><a href="/neon-docs/docs/ko/next/roadmap" target="_self">Roadmap</a></li><li class="siteNavGroupActive"><a href="/neon-docs/docs/ko/next/community-content" target="_self">Resources</a></li><li class=""><a href="/neon-docs/docs/ko/next/demos" target="_self">Demos</a></li><li class=""><a href="/neon-docs/blog/" target="_self">Blog</a></li><li class=""><a href="/neon-docs/ko/help" target="_self">Help</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/neon-docs/img/language.svg" alt="Languages icon"/>한국어</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/neon-docs/docs/ja/next/using-async-tasks">日本語</a></li><li><a href="/neon-docs/docs/en/next/using-async-tasks">English</a></li><li><a href="/neon-docs/docs/es-ES/next/using-async-tasks">Español</a></li><li><a href="/neon-docs/docs/fr/next/using-async-tasks">Français</a></li><li><a href="/neon-docs/docs/pt-BR/next/using-async-tasks">Português (Brasil)</a></li><li><a href="/neon-docs/docs/ru/next/using-async-tasks">Русский</a></li><li><a href="/neon-docs/docs/zh-CN/next/using-async-tasks">中文</a></li><li><a href="/neon-docs/docs/zh-TW/next/using-async-tasks">繁體中文</a></li></ul></div></li><script>
+<!DOCTYPE html><html lang="ko"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Async Tasks · Neon</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Tasks let you execute asynchronous background tasks that run in the Node thread pool. Behind the scenes, Neon is using N-API&#x27;s microtasks API. Microtasks are the backing implementation of Promises and Callbacks in a JS Engine. For more on microtasks, see [&quot;Tasks, microtasks, queues and schedules&quot;](https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/)"/><meta name="docsearch:version" content="next"/><meta name="docsearch:language" content="ko"/><meta property="og:title" content="Async Tasks · Neon"/><meta property="og:type" content="website"/><meta property="og:url" content="https://amilajack.github.io/neon-docs/index.html"/><meta property="og:description" content="Tasks let you execute asynchronous background tasks that run in the Node thread pool. Behind the scenes, Neon is using N-API&#x27;s microtasks API. Microtasks are the backing implementation of Promises and Callbacks in a JS Engine. For more on microtasks, see [&quot;Tasks, microtasks, queues and schedules&quot;](https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/)"/><meta property="og:image" content="https://amilajack.github.io/neon-docs/logo/text-logo.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://amilajack.github.io/neon-docs/logo/text-logo.svg"/><link rel="shortcut icon" href="/neon-docs/logo/letter-logo.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css"/><link rel="alternate" type="application/atom+xml" href="https://amilajack.github.io/neon-docs/blog/atom.xml" title="Neon Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://amilajack.github.io/neon-docs/blog/feed.xml" title="Neon Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/neon-docs/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/neon-docs/ko"><img class="logo" src="/neon-docs/logo/text-logo.svg" alt="Neon"/></a><a href="/neon-docs/ko/versions"><h3>next</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/neon-docs/docs/ko/next/intro" target="_self">Docs</a></li><li class="siteNavGroupActive"><a href="/neon-docs/docs/ko/next/roadmap" target="_self">Roadmap</a></li><li class="siteNavGroupActive"><a href="/neon-docs/docs/ko/next/community-content" target="_self">Resources</a></li><li class=""><a href="/neon-docs/docs/ko/next/demos" target="_self">Demos</a></li><li class=""><a href="/neon-docs/blog/" target="_self">Blog</a></li><li class=""><a href="/neon-docs/ko/help" target="_self">Help</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/neon-docs/img/language.svg" alt="Languages icon"/>한국어</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/neon-docs/docs/ja/next/using-async-tasks">日本語</a></li><li><a href="/neon-docs/docs/en/next/using-async-tasks">English</a></li><li><a href="/neon-docs/docs/es-ES/next/using-async-tasks">Español</a></li><li><a href="/neon-docs/docs/fr/next/using-async-tasks">Français</a></li><li><a href="/neon-docs/docs/pt-BR/next/using-async-tasks">Português (Brasil)</a></li><li><a href="/neon-docs/docs/ru/next/using-async-tasks">Русский</a></li><li><a href="/neon-docs/docs/zh-CN/next/using-async-tasks">中文</a></li><li><a href="/neon-docs/docs/zh-TW/next/using-async-tasks">繁體中文</a></li></ul></div></li><script>
         const languagesMenuItem = document.getElementById("languages-menu");
         const languagesDropDown = document.getElementById("languages-dropdown");
         languagesMenuItem.addEventListener("click", function(event) {
@@ -37,13 +37,13 @@
                 };
               }
             });
-        </script></nav></div><div class="container mainContainer docMainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Using Async Tasks (WIP)</h1></header><article><div><span><p><strong>This doc is currently a work in progress</strong></p>
-<p>For now, reference this snippet, taken <a href="https://github.com/neon-bindings/neon/blob/master/test/dynamic/native/src/js/tasks.rs" target="_blank">from the tests:</a></p>
+        </script></nav></div><div class="container mainContainer docMainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Async Tasks</h1></header><article><div><span><p>Tasks let you execute asynchronous background tasks that run in the Node thread pool. Behind the scenes, Neon is using N-API's microtasks API. Microtasks are the backing implementation of Promises and Callbacks in a JS Engine. For more on microtasks, see <a href="https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/">&quot;Tasks, microtasks, queues and schedules&quot;</a></p>
+<p>Let's look at a very minimal implementation of an async task:</p>
 <pre><code class="hljs css language-rust"><span class="hljs-keyword">use</span> neon::prelude::*;
 
-<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">SuccessTask</span></span>;
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">BackgroundTask</span></span>;
 
-<span class="hljs-keyword">impl</span> Task <span class="hljs-keyword">for</span> SuccessTask {
+<span class="hljs-keyword">impl</span> Task <span class="hljs-keyword">for</span> BackgroundTask {
     <span class="hljs-class"><span class="hljs-keyword">type</span> <span class="hljs-title">Output</span></span> = <span class="hljs-built_in">i32</span>;
     <span class="hljs-class"><span class="hljs-keyword">type</span> <span class="hljs-title">Error</span></span> = <span class="hljs-built_in">String</span>;
     <span class="hljs-class"><span class="hljs-keyword">type</span> <span class="hljs-title">JsEvent</span></span> = JsNumber;
@@ -59,33 +59,94 @@
 
 <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">perform_async_task</span></span>(<span class="hljs-keyword">mut</span> cx: FunctionContext) -&gt; JsResult&lt;JsUndefined&gt; {
     <span class="hljs-keyword">let</span> f = cx.argument::&lt;JsFunction&gt;(<span class="hljs-number">0</span>)?;
-    SuccessTask.schedule(f);
+    BackgroundTask.schedule(f);
     <span class="hljs-literal">Ok</span>(cx.undefined())
 }
 
-<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">FailureTask</span></span>;
-
-<span class="hljs-keyword">impl</span> Task <span class="hljs-keyword">for</span> FailureTask {
-    <span class="hljs-class"><span class="hljs-keyword">type</span> <span class="hljs-title">Output</span></span> = <span class="hljs-built_in">i32</span>;
-    <span class="hljs-class"><span class="hljs-keyword">type</span> <span class="hljs-title">Error</span></span> = <span class="hljs-built_in">String</span>;
-    <span class="hljs-class"><span class="hljs-keyword">type</span> <span class="hljs-title">JsEvent</span></span> = JsNumber;
-
-    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">perform</span></span>(&amp;<span class="hljs-keyword">self</span>) -&gt; <span class="hljs-built_in">Result</span>&lt;Self::Output, Self::Error&gt; {
-        <span class="hljs-literal">Err</span>(<span class="hljs-built_in">format!</span>(<span class="hljs-string">"I am a failing task"</span>))
-    }
-
-    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">complete</span></span>(<span class="hljs-keyword">self</span>, <span class="hljs-keyword">mut</span> cx: TaskContext, result: <span class="hljs-built_in">Result</span>&lt;Self::Output, Self::Error&gt;) -&gt; JsResult&lt;Self::JsEvent&gt; {
-        cx.throw_error(&amp;result.unwrap_err())
-    }
-}
-
-<span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">perform_failing_task</span></span>(<span class="hljs-keyword">mut</span> cx: FunctionContext) -&gt; JsResult&lt;JsUndefined&gt; {
-    <span class="hljs-keyword">let</span> f = cx.argument::&lt;JsFunction&gt;(<span class="hljs-number">0</span>)?;
-    FailureTask.schedule(f);
-    <span class="hljs-literal">Ok</span>(cx.undefined())
-}
+register_module!(<span class="hljs-keyword">mut</span> cx, {
+    cx.export_function(<span class="hljs-string">"performAsyncTask"</span>, perform_async_task)
+});
 </code></pre>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/neon-docs/docs/ko/next/json"><span class="arrow-prev">← </span><span>Previous</span></a><a class="docs-next button" href="/neon-docs/docs/ko/next/parallelism"><span>Next</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav docOnPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/neon-docs/" class="nav-home"><img src="/neon-docs/logo/text-logo.svg" alt="Neon" width="66" height="58"/></a><div><h5>Docs</h5><a href="/neon-docs/docs/ko/getting-started.html">Getting Started</a><a href="/neon-docs/docs/ko/word-counting-guide.html">Guides</a><a href="https://api.neon-bindings.com/neon/index.html" target="_blank">API Reference</a></div><div><h5>Community</h5><a href="https://rust-bindings-slackin.herokuapp.com/">Project Chat</a><a href="https://twitter.com/rustneon" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/neon-docs/blog">Blog</a><a href="https://github.com/neon-bindings/neon">GitHub</a><a class="github-button" href="https://github.com/neon-bindings/neon" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2018 Amila Welihinda</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+<h3><a class="anchor" aria-hidden="true" id="output"></a><a href="#output" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Output</h3>
+<p>The task's result type, which is sent back to the main thread to communicate a successful result back to JavaScript.</p>
+<h3><a class="anchor" aria-hidden="true" id="error"></a><a href="#error" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Error</h3>
+<p>The task's error type, which is sent back to the main thread to communicate a task failure back to JavaScript.</p>
+<h3><a class="anchor" aria-hidden="true" id="jsevent"></a><a href="#jsevent" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>JsEvent</h3>
+<p>The type of JavaScript value that gets produced to the asynchronous callback on the main thread after the task is completed.</p>
+<h3><a class="anchor" aria-hidden="true" id="perform"></a><a href="#perform" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>.perform()</code></h3>
+<p>Perform the task, producing either a successful <code>Output</code> or an unsuccessful <code>Error</code>. This method is executed in a background thread as part of libuv's built-in thread pool.</p>
+<h3><a class="anchor" aria-hidden="true" id="complete"></a><a href="#complete" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>.complete()</code></h3>
+<p>Convert the result of the task to a JavaScript value to be passed to the asynchronous callback. This method is executed on the main thread at some point after the background task is completed.</p>
+<h3><a class="anchor" aria-hidden="true" id="schedulef"></a><a href="#schedulef" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>.schedule(f)</code></h3>
+<p>Schedule a task to be executed on a background thread. <code>callback</code> should have the following signature:</p>
+<pre><code class="hljs css language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span>(<span class="hljs-params">err, value</span>) </span>{}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="calling-async-tasks"></a><a href="#calling-async-tasks" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Calling Async Tasks</h2>
+<p>Now lets look at how we would schudle async task using the <code>BackgroundTask</code> struct we created:</p>
+<pre><code class="hljs css language-js"><span class="hljs-keyword">const</span> { performAsyncTask } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../native'</span>);
+
+<span class="hljs-comment">// Iterate 10,0000 times in background thread</span>
+performAsyncTask(<span class="hljs-function">(<span class="hljs-params">err, value</span>) =&gt;</span> {
+  <span class="hljs-keyword">let</span> count = <span class="hljs-number">10</span>;
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">100000</span>; i++) {
+    count++;
+  }
+  <span class="hljs-built_in">console</span>.log(count, <span class="hljs-string">'first sum from background thread'</span>);
+});
+
+<span class="hljs-comment">// Iterate 10 times</span>
+<span class="hljs-keyword">let</span> count = <span class="hljs-number">10</span>;
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) {
+  count++;
+}
+<span class="hljs-built_in">console</span>.log(count, <span class="hljs-string">'second sum from main thread'</span>);
+</code></pre>
+<p>If you run this code you will get the following results:</p>
+<pre><code class="hljs">20 'second sum from main thread'
+100010 'first sum from background thread'
+</code></pre>
+<p>If <code>performAsyncTask()</code> were executed syncronously then the background thread would finish running before the main thread finishes and the results would be:</p>
+<pre><code class="hljs">100010 'first sum from background thread'
+20 'second sum from main thread'
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="handling-failing-tasks"></a><a href="#handling-failing-tasks" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Handling Failing Tasks</h2>
+<p>If we wanted our previous example to throw an error we could simple replace the <code>perform</code> and <code>complete</code> methods with the following:</p>
+<pre><code class="hljs css language-rust"><span class="hljs-comment">// --snip--</span>
+<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">perform</span></span>(&amp;<span class="hljs-keyword">self</span>) -&gt; <span class="hljs-built_in">Result</span>&lt;Self::Output, Self::Error&gt; {
+    <span class="hljs-literal">Err</span>(<span class="hljs-built_in">format!</span>(<span class="hljs-string">"I am a failing task"</span>))
+}
+
+<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">complete</span></span>(<span class="hljs-keyword">self</span>, <span class="hljs-keyword">mut</span> cx: TaskContext, result: <span class="hljs-built_in">Result</span>&lt;Self::Output, Self::Error&gt;) -&gt; JsResult&lt;Self::JsEvent&gt; {
+    cx.throw_error(&amp;result.unwrap_err())
+}
+<span class="hljs-comment">// --snip--</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="promises"></a><a href="#promises" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Promises</h2>
+<p>If we wanted to wrap our task around a promise, we could do that like so:</p>
+<pre><code class="hljs css language-js"><span class="hljs-comment">// ./lib/index.js</span>
+<span class="hljs-keyword">const</span> { performAsyncTask } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../native'</span>);
+
+<span class="hljs-comment">// Iterate 10,0000 times in background thread</span>
+<span class="hljs-keyword">const</span> promisePerformAsyncTask = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+    performAsyncTask(<span class="hljs-function">(<span class="hljs-params">err, res</span>) =&gt;</span> {
+      <span class="hljs-keyword">let</span> count = <span class="hljs-number">10</span>;
+      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">100000</span>; i++) {
+        count++;
+      }
+      <span class="hljs-built_in">console</span>.log(count, <span class="hljs-string">'first sum from background thread'</span>);
+    });
+  });
+};
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="runnable-example"></a><a href="#runnable-example" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Runnable Example</h2>
+<p>For another example of tasks, you can clone and run <a href="https://github.com/dherman/neon-bigint-task">neon-bigint-task</a>:</p>
+<pre><code class="hljs css language-bash">git <span class="hljs-built_in">clone</span> https://github.com/dherman/neon-bigint-task.git
+<span class="hljs-built_in">cd</span> neon-bigint-task
+neon build
+</code></pre>
+<p>This example computes the <code>100000</code>th fibonacci number on a background thread while keeping the main thread free</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/neon-docs/docs/ko/next/json"><span class="arrow-prev">← </span><span>Previous</span></a><a class="docs-next button" href="/neon-docs/docs/ko/next/parallelism"><span>Next</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav docOnPageNav"><ul class="toc-headings"><li><a href="#calling-async-tasks">Calling Async Tasks</a></li><li><a href="#handling-failing-tasks">Handling Failing Tasks</a></li><li><a href="#promises">Promises</a></li><li><a href="#runnable-example">Runnable Example</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/neon-docs/" class="nav-home"><img src="/neon-docs/logo/text-logo.svg" alt="Neon" width="66" height="58"/></a><div><h5>Docs</h5><a href="/neon-docs/docs/ko/getting-started.html">Getting Started</a><a href="/neon-docs/docs/ko/word-counting-guide.html">Guides</a><a href="https://api.neon-bindings.com/neon/index.html" target="_blank">API Reference</a></div><div><h5>Community</h5><a href="https://rust-bindings-slackin.herokuapp.com/">Project Chat</a><a href="https://twitter.com/rustneon" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/neon-docs/blog">Blog</a><a href="https://github.com/neon-bindings/neon">GitHub</a><a class="github-button" href="https://github.com/neon-bindings/neon" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2018 Amila Welihinda</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {
                     return;
