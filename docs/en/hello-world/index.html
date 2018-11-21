@@ -63,7 +63,7 @@
 <p>The front-end of a Neon package is a pure JavaScript module (<code>lib/index.js</code>, by default), and the back-end is a native library implemented as a Rust crate. The Rust crate lives in the <code>native/</code> subdirectory of the project.</p>
 <h1><a class="anchor" aria-hidden="true" id="building-and-running"></a><a href="#building-and-running" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Building and Running</h1>
 <p>We haven't yet implemented anything, but just to see that <code>neon new</code> produced a complete, minimal Neon project, let's try building it:</p>
-<pre><code class="hljs css language-shell">neon build
+<pre><code class="hljs css language-shell">neon build --release
 </code></pre>
 <p>The build process generates a handful of files that you don't need to work with directly:</p>
 <ul>
@@ -115,8 +115,8 @@ hello node
 <span class="hljs-built_in">module</span>.exports = addon.threading_hint;
 </code></pre>
 <h1><a class="anchor" aria-hidden="true" id="try-it-out"></a><a href="#try-it-out" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Try it Out!</h1>
-<p>Now we should be able to rebuild the project with <code>neon build</code> again:</p>
-<pre><code class="hljs css language-shell">neon build
+<p>Now we should be able to rebuild the project with <code>neon build --release</code> again:</p>
+<pre><code class="hljs css language-shell">neon build --release
 </code></pre>
 <p>This will create a release build for us. Assuming we didn't make any mistakes, we can test out our new Neon module at the Node console from the root of our project directory:</p>
 <pre><code class="hljs css language-shell">node
