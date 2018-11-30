@@ -1,0 +1,108 @@
+<!DOCTYPE html><html lang="zh-TW"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Arrays · Neon</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## Converting from `Vec` to `JsArray`"/><meta name="docsearch:version" content="next"/><meta name="docsearch:language" content="zh-TW"/><meta property="og:title" content="Arrays · Neon"/><meta property="og:type" content="website"/><meta property="og:url" content="https://amilajack.github.io/neon-docs/index.html"/><meta property="og:description" content="## Converting from `Vec` to `JsArray`"/><meta property="og:image" content="https://amilajack.github.io/neon-docs/logo/text-logo.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://amilajack.github.io/neon-docs/logo/text-logo.svg"/><link rel="shortcut icon" href="/neon-docs/logo/letter-logo.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css"/><link rel="alternate" type="application/atom+xml" href="https://amilajack.github.io/neon-docs/blog/atom.xml" title="Neon Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://amilajack.github.io/neon-docs/blog/feed.xml" title="Neon Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/neon-docs/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/neon-docs/zh-TW"><img class="logo" src="/neon-docs/logo/text-logo.svg" alt="Neon"/></a><a href="/neon-docs/zh-TW/versions"><h3>next</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/neon-docs/docs/zh-TW/next/intro" target="_self">Docs</a></li><li class=""><a href="https://github.com/amilajack/neon-examples#table-of-contents" target="_self">Examples</a></li><li class=""><a href="https://api.neon-bindings.com/neon/index.html" target="_self">API</a></li><li class="siteNavGroupActive"><a href="/neon-docs/docs/zh-TW/next/community-content" target="_self">Resources</a></li><li class="siteNavGroupActive"><a href="/neon-docs/docs/zh-TW/next/roadmap" target="_self">Roadmap</a></li><li class=""><a href="/neon-docs/zh-TW/help" target="_self">Help</a></li><li class=""><a href="/neon-docs/blog/" target="_self">Blog</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/neon-docs/img/language.svg" alt="Languages icon"/>繁體中文</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/neon-docs/docs/ja/next/js-array">日本語</a></li><li><a href="/neon-docs/docs/en/next/js-array">English</a></li><li><a href="/neon-docs/docs/es-ES/next/js-array">Español</a></li><li><a href="/neon-docs/docs/fr/next/js-array">Français</a></li><li><a href="/neon-docs/docs/ko/next/js-array">한국어</a></li><li><a href="/neon-docs/docs/pt-BR/next/js-array">Português (Brasil)</a></li><li><a href="/neon-docs/docs/ru/next/js-array">Русский</a></li><li><a href="/neon-docs/docs/zh-CN/next/js-array">中文</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Basics</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"></div></section></div><script>
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docMainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Arrays</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="converting-from-vec-to-jsarray"></a><a href="#converting-from-vec-to-jsarray" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Converting from <code>Vec</code> to <code>JsArray</code></h2>
+<p>Here is a simple example of converting a rust <code>Vec</code> to a JS <code>Array</code> using <code>JsArray</code>:</p>
+<pre><code class="hljs css language-rust"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">convert_vec_to_array</span></span>(<span class="hljs-keyword">mut</span> cx: FunctionContext) -&gt; JsResult&lt;JsArray&gt; {
+    <span class="hljs-keyword">let</span> vec: <span class="hljs-built_in">Vec</span>&lt;<span class="hljs-built_in">String</span>&gt; = <span class="hljs-built_in">Vec</span>::with_capacity(<span class="hljs-number">100</span>);
+
+    <span class="hljs-comment">// Create the JS array</span>
+    <span class="hljs-keyword">let</span> js_array = JsArray::new(&amp;<span class="hljs-keyword">mut</span> cx, vec.len() <span class="hljs-keyword">as</span> <span class="hljs-built_in">u32</span>);
+
+    <span class="hljs-comment">// Iterate over the rust Vec and map each value in the Vec to the JS array</span>
+    <span class="hljs-keyword">for</span> (i, obj) <span class="hljs-keyword">in</span> vec.iter().enumerate() {
+        <span class="hljs-keyword">let</span> js_string = cx.string(obj);
+        <span class="hljs-keyword">let</span> _  = js_array.set(&amp;<span class="hljs-keyword">mut</span> cx, i <span class="hljs-keyword">as</span> <span class="hljs-built_in">u32</span>, js_string);
+    }
+
+    <span class="hljs-literal">Ok</span>(js_array)
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="returning-an-empty-element"></a><a href="#returning-an-empty-element" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returning an empty element</h2>
+<pre><code class="hljs css language-rust"><span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">return_js_array</span></span>(<span class="hljs-keyword">mut</span> cx: FunctionContext) -&gt; JsResult&lt;JsArray&gt; {
+    <span class="hljs-literal">Ok</span>(cx.empty_array())
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="adding-elements-to-an-array"></a><a href="#adding-elements-to-an-array" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Adding elements to an array</h2>
+<p>This is an example of adding a number to a <code>JsArray</code></p>
+<pre><code class="hljs css language-rust"><span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">return_js_array_with_number</span></span>(<span class="hljs-keyword">mut</span> cx: FunctionContext) -&gt; JsResult&lt;JsArray&gt; {
+    <span class="hljs-keyword">let</span> array: Handle&lt;JsArray&gt; = JsArray::new(&amp;<span class="hljs-keyword">mut</span> cx, <span class="hljs-number">1</span>);
+    <span class="hljs-keyword">let</span> n = cx.number(<span class="hljs-number">9000.0</span>);
+    array.set(&amp;<span class="hljs-keyword">mut</span> cx, <span class="hljs-number">0</span>, n)?;
+    <span class="hljs-literal">Ok</span>(array)
+}
+</code></pre>
+<p>And this is an example of adding a string to a <code>JsArray</code></p>
+<pre><code class="hljs css language-rust"><span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">return_js_array_with_string</span></span>(<span class="hljs-keyword">mut</span> cx: FunctionContext) -&gt; JsResult&lt;JsArray&gt; {
+    <span class="hljs-keyword">let</span> array: Handle&lt;JsArray&gt; = JsArray::new(&amp;<span class="hljs-keyword">mut</span> cx, <span class="hljs-number">1</span>);
+    <span class="hljs-keyword">let</span> s = cx.string(<span class="hljs-string">"hello node"</span>);
+    array.set(&amp;<span class="hljs-keyword">mut</span> cx, <span class="hljs-number">0</span>, s)?;
+    <span class="hljs-literal">Ok</span>(array)
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="arraybuffer"></a><a href="#arraybuffer" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>ArrayBuffer</code></h2>
+<p>Neon also provides support for the ES6 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a> as through the <a href="https://api.neon-bindings.com/neon/prelude/struct.jsarraybuffer"><code>JsArrayBuffer</code></a> struct. It has the exact same constructor and methods as <code>JsArray</code></p>
+<h2><a class="anchor" aria-hidden="true" id="node-buffer"></a><a href="#node-buffer" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Node <code>Buffer</code></h2>
+<p>The Node Buffer type is also supported by Neon through the <a href="https://api.neon-bindings.com/neon/prelude/struct.jsbuffer"><code>JsBuffer</code></a> struct. It as the same constructor and methods as <code>JsArray</code></p>
+<h4><a class="anchor" aria-hidden="true" id="runnable-example"></a><a href="#runnable-example" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Runnable Example</h4>
+<p>For a working example of using Node's <code>Buffer</code> class with Neon, see <a href="neon-binary-example">https://github.com/dherman/neon-binary-example</a>. You can get started with it by running the following commands:</p>
+<pre><code class="hljs css language-bash">git <span class="hljs-built_in">clone</span> https://github.com/dherman/neon-binary-example
+<span class="hljs-built_in">cd</span> neon-binary-example
+neon build
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/neon-docs/docs/zh-TW/next/js-primitives"><span class="arrow-prev">← </span><span>Previous</span></a><a class="docs-next button" href="/neon-docs/docs/zh-TW/next/js-object"><span>Next</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav docOnPageNav"><ul class="toc-headings"><li><a href="#converting-from-vec-to-jsarray">Converting from <code>Vec</code> to <code>JsArray</code></a></li><li><a href="#returning-an-empty-element">Returning an empty element</a></li><li><a href="#adding-elements-to-an-array">Adding elements to an array</a></li><li><a href="#arraybuffer"><code>ArrayBuffer</code></a></li><li><a href="#node-buffer">Node <code>Buffer</code></a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/neon-docs/" class="nav-home"><img src="/neon-docs/logo/text-logo.svg" alt="Neon" width="66" height="58"/></a><div><h5>Docs</h5><a href="/neon-docs/docs/zh-TW/getting-started.html">Getting Started</a><a href="/neon-docs/docs/zh-TW/word-counting-guide.html">Guides</a><a href="https://api.neon-bindings.com/neon/index.html" target="_blank">API Reference</a></div><div><h5>Community</h5><a href="https://rust-bindings-slackin.herokuapp.com/">Project Chat</a><a href="https://twitter.com/rustneon" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/neon-docs/blog">Blog</a><a href="https://github.com/neon-bindings/neon">GitHub</a><a class="github-button" href="https://github.com/neon-bindings/neon" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2018 Amila Welihinda</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: 'bfa6bb4b57d4fa853c0358ee9b195146',
+                indexName: 'amilajack_neon',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:zh-TW","version:next"]}
+              });
+            </script></body></html>
