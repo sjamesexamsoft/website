@@ -10,7 +10,7 @@
             languagesDropDown.className = "hide";
           }
         });
-      </script></span><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Recent Posts</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Recent Posts</h3><ul><li class="navListItem"><a class="navItem" href="/blog/2018/10/22/hello-world">Hello World!</a></li></ul></div></div></section></div><script>
+      </script></span><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Recent Posts</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Recent Posts</h3><ul><li class="navListItem"><a class="navItem" href="/blog/2018/10/22/hello-world">New Docs and Website! 🎉🎉🎉</a></li><li class="navListItem"><a class="navItem" href="/blog/2018/01/14/rust-2018-a-neon-wish-list">#Rust2018: A Neon Wish List</a></li><li class="navListItem"><a class="navItem" href="/blog/2017/09/25/neon-wants-your-help">Neon Wants Your Help!</a></li><li class="navListItem"><a class="navItem" href="/blog/2016/04/01/native-js-classes-in-neon">Native JS Classes in Neon</a></li><li class="navListItem"><a class="navItem" href="/blog/2015/12/23/neon-node-rust">Neon: Node + Rust = 💖</a></li></ul></div></div></section></div><script>
             document.addEventListener('DOMContentLoaded', function() {
               createToggler('#navToggler', '#docsNav', 'docsSliderActive');
               createToggler('#tocToggler', 'body', 'tocActive');
@@ -37,7 +37,7 @@
                 };
               }
             });
-        </script></nav></div><div class="container mainContainer postContainer blogContainer"><div class="wrapper"><div class="posts"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle"><a href="/blog/2018/10/22/hello-world">Hello World!</a></h1><p class="post-meta">October 22, 2018</p><div class="authorBlock"><p class="post-authorName"><a target="_blank" rel="noreferrer noopener">Amila Welihinda</a></p></div></header><article class="post-content"><div><span><p>This is the first post from the rewritten website for neon. This site is based on a static site generator, called <a href="https://docusaurus.io/">docusarus</a>, and it is specifically for documentation. Here are some of the goals of this new website some of the benefits that come with choosing this stack:</p>
+        </script></nav></div><div class="container mainContainer postContainer blogContainer"><div class="wrapper"><div class="posts"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle"><a href="/blog/2018/10/22/hello-world">New Docs and Website! 🎉🎉🎉</a></h1><p class="post-meta">October 22, 2018</p><div class="authorBlock"><p class="post-authorName"><a target="_blank" rel="noreferrer noopener">Amila Welihinda</a></p></div></header><article class="post-content"><div><span><p>This is the first post from the rewritten website for neon. This site is based on a static site generator, called <a href="https://docusaurus.io/">docusarus</a>, and it is specifically for documentation. Here are some of the goals of this new website some of the benefits that come with choosing this stack:</p>
 <p>The goal of this new website is to:</p>
 <ul>
 <li>Replace the existing website, which is based on jekyll</li>
@@ -46,6 +46,250 @@
 <li>Built-in search functionality with algolia (<a href="https://docusaurus.io/">Docusarus</a> makes this easy)</li>
 <li>Ready for Translations (<a href="https://docusaurus.io/">Docusarus</a> makes this easy)</li>
 </ul>
+</span></div></article></div><div class="post"><header class="postHeader"><h1 class="postHeaderTitle"><a href="/blog/2018/01/14/rust-2018-a-neon-wish-list">#Rust2018: A Neon Wish List</a></h1><p class="post-meta">January 14, 2018</p><div class="authorBlock"><p class="post-authorName"><a target="_blank" rel="noreferrer noopener">Dave Herman</a></p></div></header><article class="post-content"><div><span><p>⚠️ This article contains references to an outdated version of neon ⚠️</p>
+<p>While I've been thoroughly enjoying the Rust community's spirited <a href="https://blog.rust-lang.org/2018/01/03/new-years-rust-a-call-for-community-blogposts.html">#Rust2018 blog-fest</a>, I wasn't really thinking of participating myself until <a href="http://jvns.ca">Julia Evans</a> pointed out <a href="https://twitter.com/b0rk/status/952370352759418880">the leadership wants to hear from everyone</a>---even if I might not have anything especially new to add. So here's my little wish list for Rust in 2018.</p>
+<p>Since I'm not in Rust's leadership, I don't have to worry about synthesizing some grand narrative for the whole of Rust. So I'll just focus on a few things that would be personally useful to me. In particular, I'll stick to topics that would be helpful for my <a href="https://www.neon-bindings.com">Neon</a> project, a set of bindings for writing native Node extension modules in Rust.</p>
+<!--more-->
+<h1><a class="anchor" aria-hidden="true" id="stabilize-impl-trait"></a><a href="#stabilize-impl-trait" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Stabilize <code>impl trait</code></h1>
+<p>The most challenging part of keeping Neon's design manageable is the annotation burden. Neon provides a safe API for managing handles into Node's JavaScript garbage collector, and to do this, it requires passing around a &quot;handle scope&quot; parameter everywhere, which tracks the lifetimes of handles. There are a few flavors of handle scopes, which means helper functions in Neon projects often end up with some pretty hairy signatures:</p>
+<pre><code class="hljs css language-rust"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">get_foo_bar</span></span>&lt;<span class="hljs-symbol">'a</span>, S: Scope&lt;<span class="hljs-symbol">'a</span>&gt;&gt;(scope: &amp;<span class="hljs-keyword">mut</span> S, obj: Handle&lt;<span class="hljs-symbol">'a</span>, JsObject&gt;) -&gt; JsResult&lt;<span class="hljs-symbol">'a</span>, JsValue&gt; {
+    <span class="hljs-comment">// extract the `obj.foo` property and check that it's an object</span>
+    <span class="hljs-keyword">let</span> foo = obj.get(scope, <span class="hljs-string">"foo"</span>)?.check::&lt;JsObject&gt;()?;
+    <span class="hljs-comment">// extract the `obj.foo.bar` property</span>
+    <span class="hljs-keyword">let</span> bar = foo.get(scope, <span class="hljs-string">"bar"</span>)?;
+    <span class="hljs-literal">Ok</span>(bar)
+}
+</code></pre>
+<p>I would love for Neon users to be able to combine lifetime elision and the <a href="https://github.com/rust-lang/rust/issues/34511"><code>impl trait</code></a> shorthand syntax to write something like:</p>
+<pre><code class="hljs css language-rust"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">get_foo_bar</span></span>(scope: &amp;<span class="hljs-keyword">mut</span> <span class="hljs-keyword">impl</span> Scope, obj: Handle&lt;JsObject&gt;) -&gt; JsResult&lt;JsValue&gt; {
+    <span class="hljs-comment">// ...</span>
+}
+</code></pre>
+<p>(With an upcoming <a href="https://github.com/dherman/rfcs-1/blob/vm-two-point-oh/text/vm-2.0.md">cleanup of the core Neon API</a>, the details of this would change a bit, but <code>impl trait</code> would be just as appealing.)</p>
+<h1><a class="anchor" aria-hidden="true" id="syntactic-abstraction-for-error-propagation"></a><a href="#syntactic-abstraction-for-error-propagation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Syntactic abstraction for error propagation</h1>
+<p>I adore the <code>?</code> syntax, but it's not enough! Expressions like <code>Ok(bar)</code> in the above example are an indication that we don't have a complete abstraction layer in the syntax for error propagation. I find it particularly galling when I have to see <code>Ok(())</code>. It's dipping down into an unnecessary abstraction layer, distracting the core logic of the function with mechanical details of the representation of Rust's control flow protocols.</p>
+<p>I'm excited about the discussions around <a href="https://internals.rust-lang.org/t/pre-rfc-catching-functions/6505">&quot;catching functions&quot;</a>. I think we can get to a sweet spot where we have an abstraction layer in the syntax that never exposes the <code>Result</code> type for error handling, while still explicitly annotating every point that may throw (thanks to <code>?</code> syntax, and by contrast to exceptions). The above examples might look something like:</p>
+<pre><code class="hljs css language-rust"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">get_foo_bar</span></span>(scope: &amp;<span class="hljs-keyword">mut</span> <span class="hljs-keyword">impl</span> Scope, obj: Handle&lt;JsObject&gt;) -&gt; Handle&lt;JsValue&gt; catch JsException {
+    <span class="hljs-keyword">let</span> foo = obj.get(scope, <span class="hljs-string">"foo"</span>)?.check::&lt;JsObject&gt;()?;
+    <span class="hljs-keyword">let</span> bar = foo.get(scope, <span class="hljs-string">"bar"</span>)?;
+    <span class="hljs-keyword">return</span> bar;
+}
+</code></pre>
+<h1><a class="anchor" aria-hidden="true" id="make-cargo-more-extensible"></a><a href="#make-cargo-more-extensible" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Make cargo more extensible</h1>
+<p>Like <code>xargo</code> and <code>wargo</code>, Neon comes with a command-line tool that wraps cargo's behavior in order to abstract away a bunch of build configuration details. I'm proud of this abstraction, because it makes building native modules in Node far easier than they are with C++. But I would much rather Neon programmers could use cargo directly, calling all their usual familiar commands like <code>cargo build</code> and <code>cargo run</code>.</p>
+<p>To support this, Neon will need a handful of extension points that don't exist today:</p>
+<ul>
+<li>The ability to extend the memoization logic with extra environmental information (e.g. which version of Node is being built for and the values of some Node-specific environment variables).</li>
+<li>Post-build hooks, so I can generate the final DLL and put it in the right directory.</li>
+<li>The ability to add default build flags (for example, on macOS, <code>neon build</code> actually calls <code>cargo rustc</code> with some extra low-level linking flags).</li>
+<li>Project templates for <code>cargo new</code>.</li>
+</ul>
+<p>Being able to write</p>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> cargo new --template=neon my-first-neon-project</span>
+<span class="hljs-meta">$</span><span class="bash"> <span class="hljs-built_in">cd</span> my-first-neon-project</span>
+<span class="hljs-meta">$</span><span class="bash"> cargo run</span>
+</code></pre>
+<p>would be so amazing.</p>
+<h1><a class="anchor" aria-hidden="true" id="neon-is-about-welcoming-js-programmers"></a><a href="#neon-is-about-welcoming-js-programmers" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Neon is about welcoming JS programmers</h1>
+<p>I promised no narrative, but there is a common thread here. I started the Neon project because I thought it would make a great bridge between the JavaScript and Rust communities. All of the topics in this post are about facilitating that connection:</p>
+<ul>
+<li>Neon forces JS programmers to get more explicit about working with the garbage collector than they normally have to, so making that as lightweight as possible makes falling into native code less of a steep cliff.</li>
+<li>JS is a language with exceptions, so making the protocol for emulating exceptions in Rust as ergonomic as possible will make Rust a better environment for JS programmers.</li>
+<li>And just as Node projects have a workflow oriented around <code>npm</code>, giving Neon projects a standard <code>cargo</code>-based workflow will feel familiar and pleasant to Node programmers.</li>
+</ul>
+<p>My dream is that Neon can serve as a gateway welcoming JS programmers into Rust and systems programming for years to come. The more we smoothe the path between them, the more people we invite into our community.</p>
+</span></div></article></div><div class="post"><header class="postHeader"><h1 class="postHeaderTitle"><a href="/blog/2017/09/25/neon-wants-your-help">Neon Wants Your Help!</a></h1><p class="post-meta">September 25, 2017</p><div class="authorBlock"><p class="post-authorName"><a target="_blank" rel="noreferrer noopener">Dave Herman</a></p></div></header><article class="post-content"><div><span><p>⚠️ This article contains references to an outdated version of neon ⚠️</p>
+<p>My history with Rust goes back a long way. But it was when I really started to understand its <a href="https://www.youtube.com/watch?v=ySW6Yk_DerY">enabling potential</a>, its capacity to empower whole groups of people to do things they couldn't do before, that I just had to find a more direct way to get involved with making that promise a reality.</p>
+<p>I decided that the best way I could help widen the on-ramp to Rust was to create <a href="https://www.neon-bindings.com">Neon</a>: a library for conveniently implementing native Node.js modules with Rust instead of C/C++. With Neon, JavaScript programmers can get access to all the power that Rust offers: high-performance native code, convenient multithreading, freedom from memory faults and data races, and access to native libraries and the <a href="https://crates.io">Cargo</a> ecosystem. And they can do this without throwing away their working apps or existing expertise. In short, my goal with Neon is to make it easy for JavaScript programmers to &quot;dip their toe&quot; into Rust without diving straight into the deep end.</p>
+<p><img class="right" style="width: 200px; height: 150px;" src="/assets/help-wanted.jpg" /> We've made some great progress recently, with some cool new features including <a href="https://guides.neon-bindings.com/electron-apps/">Electron support</a> and a new <a href="https://api.neon-bindings.com/neon/task/">Task API</a> for asynchronously spawning Rust computations to run in a background thread. <strong>But Neon is still a young project, and could use your help to take it to the next level!</strong> Neon is still primarily built by me and a small set of contributors, so <strong>I'm looking for contributors with a wide range of skills and interests</strong> who can join us to take Neon to the next level and eventually <strong>grow into a project leadership team.</strong> I think we're onto something exciting here: a chance to build bridges between the JavaScript and Rust worlds and to create opportunities for aspiring new systems programmers. And I hope you'll consider being a part of it!</p>
+<!--more-->
+<h2><a class="anchor" aria-hidden="true" id="and-i-mean-a-wide-range"></a><a href="#and-i-mean-a-wide-range" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>...And I Mean a Wide Range</h2>
+<p>My dream is to make Neon:</p>
+<ul>
+<li><strong>Easy to learn:</strong> The default abstraction layer should be intuitive enough that a newcomer's first experience coming from JavaScript should be approachable, and there should be documentation and learning materials to smoothe the on-boarding experience.</li>
+<li><strong>Rock-solid:</strong> Users should feel confident that refactoring their code in Rust should be no more likely to crash their Node server than vanilla JavaScript.</li>
+<li><strong>Fully-featured:</strong> The Neon API should be able to express everything you could do in JavaScript itself.</li>
+<li><strong>Stable:</strong> Once we start approaching 1.0, Neon should get on a regular release cycle, with strong commitment to semantic versioning and backwards compatibility.</li>
+</ul>
+<p>Just to give you a sense of the many varied kinds of contributions we could use, here's a taste:</p>
+<p><strong>Project management.</strong> We should keep on top of issues and PRs. I would love to set up a regular meeting with anyone who's willing to help out with this! I could also use help setting up a simple RFC process similar to <a href="https://github.com/rust-lang/rfcs">Rust RFCs</a>, especially for having community discussions around API and workflow design.</p>
+<p><strong>Technical writing.</strong> The <a href="https://github.com/neon-bindings/guides">guides</a> are shaping up, but they're incomplete and one of the most important tools for on-boarding new users. The <a href="https://api.neon-bindings.com">API docs</a> are pretty rudimentary and would benefit from many more examples---we should strive for a high-quality, illustrative example for every single API.</p>
+<p><strong>Testing.</strong> The <a href="https://github.com/neon-bindings/neon/tree/master/test">test suite</a> has a decent structure but is not at all complete. We should aim for complete test coverage of the API!</p>
+<p><strong>Teaching.</strong> I would love to get some good thinking into how to teach Neon to various audiences, especially people who are new to Rust and systems programming. We could use this to drive the way we structure the guides, tutorial videos, etc.</p>
+<p><strong>Windows development.</strong> My primary development machine is Windows these days, but I'm not an expert. I recently <a href="https://github.com/neon-bindings/neon/issues/248">broke our Appveyor builds</a> just to prove it! 😝 We've also seen some intermittent hangs in Appveyor builds and I'd love a Windows expert to <a href="https://github.com/neon-bindings/neon/issues/250">do some investigating</a>!</p>
+<p><strong>Web development.</strong> The Neon web site is currently a static page. It certainly would be fun to set it up as a Node page using Neon itself! One of the nice dynamic things we could do would be to create a roadmap page like <a href="http://usehelix.com/roadmap">the one Helix has</a>, with automatic tracking of milestone progress using GitHub APIs. We should also set up a Neon project blog with Jekyll and style it consistently with the rest of <a href="https://www.neon-bindings.com">neon-bindings.com</a>.</p>
+<p><strong>Ops and automation.</strong> I've started an <a href="https://github.com/neon-bindings/neon/issues?q=is%3Aissue+is%3Aopen+label%3Aautomation">automation label</a> in the issues. A fantastic contribution would be an automated <a href="https://github.com/neon-bindings/neon/issues/42">publication script</a> to make releases one-touch. (This is realistically achievable now thanks to some project reorganization.)</p>
+<p><strong>Node plugins.</strong> We should explore the possibility of supporting using the new <a href="https://nodejs.org/api/n-api.html">N-API</a> as an alternative backend for the implementation. We wouldn't be able to move to this as the default backend right away, but it could pave the way for supporting <a href="https://github.com/nodejs/node-chakracore">Node on ChakraCore</a>, and eventually might replace the current backend entirely.</p>
+<p><strong>API design.</strong> There are lots of things you can do in JavaScript that you still can't do in Neon, so there's plenty of missing APIs to finish. And it's not too late to make incompatible changes to the API that's there currently. For example, I'd be especially interested in ideas about making the <a href="https://api.neon-bindings.com/neon/scope/trait.scope"><code>Scope</code></a> API less awkward, if possible.</p>
+<p><strong>Cargo extensions.</strong> So far, the <a href="https://www.npmjs.com/package/neon-cli">neon-cli</a> workflow has been reasonably successful at abstracting away the painful configuration details required to build native Node modules correctly. But the <em>ideal</em> situation would be to allow programmers to just use <code>cargo build</code>, <code>cargo run</code>, and the like to build their Neon crates like any other Rust project. The recent discussions around <a href="https://github.com/rust-lang/rfcs/pull/2136">making Cargo extensible</a> open up some exciting possibilities to push in this direction. One of the ways you can indirectly help with Neon is to help that effort.</p>
+<p><strong>Macrology.</strong> One of the big, exciting projects we have left is to flesh out the [high-level macro for defining JavaScript classes]({{ site.baseurl }}{% post_url 2016-04-01-native-js-classes-in-neon %}) (and another for defining standalone functions) so users can use simple type annotations to automate conversions between JavaScript and Rust types. We should take inspiration from the design of our sibling project, <a href="http://usehelix.com">Helix</a>!</p>
+<p><strong>Systems programming.</strong> One of the biggest challenges we have to tackle is making the process of shipping Neon libraries practical, especially for shipping prebuilt binaries. One technique we can explore is to create an ABI-stable middle layer so that Neon binaries don't need to be rebuilt for different versions of Node.</p>
+<p><strong>Threading architectures.</strong> Currently, Neon supports a couple of forms of threading: pausing the JavaScript VM to synchronously run a parallelized Rust computation (via the <a href="https://api.neon-bindings.com/neon/vm/trait.lock"><code>Lock</code></a> API), and running a background <a href="https://api.neon-bindings.com/neon/task/trait.task"><code>Task</code></a> as part of the <a href="http://docs.libuv.org/en/v1.x/threadpool.html">libuv thread pool</a>. There's more we can do both on the computation side (for example, supporting <a href="https://github.com/neon-bindings/neon/issues/228">attaching to different threads than libuv's pool</a>) and the data side (for example, supporting <a href="https://v8docs.nodesource.com/node-8.0/d5/d6e/classv8_1_1_array_buffer.html#a9291f6ac203b9ceae83f7f17d39ecb59"><code>ArrayBuffer</code> transfer</a>).</p>
+<h2><a class="anchor" aria-hidden="true" id="getting-involved"></a><a href="#getting-involved" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Getting Involved</h2>
+<p>Does any of these sound like something you'd be interested in? Or maybe you have other ideas! If you want to help, come talk to me (<strong>@dherman</strong>) in the <a href="https://rust-bindings.slack.com/messages/neon"><code>#neon</code> community Slack channel</a> (make sure to get an <a href="https://rust-bindings-slackin.herokuapp.com/">automatic invite</a> first).</p>
+<h2><a class="anchor" aria-hidden="true" id="img-class-right-style-width-184px-height-128px-src-assets-come-inpng-a-note-about-community"></a><a href="#img-class-right-style-width-184px-height-128px-src-assets-come-inpng-a-note-about-community" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><img class="right" style="width: 184px; height: 128px;" src="/assets/come-in.png" /> A Note About Community</h2>
+<p>As the original creator of this project, I'm responsible not only for the software but for the community I foster. I <em>deeply love</em> this part of open source, and I don't take the responsibility lightly.</p>
+<p>Neon has a ton of cool tech inside of it, and if that's the only aspect you're interested in, that's totally OK. Not everyone needs to be passionate about community-building. Still, not unlike Rust, this whole project's purpose is to <strong>widen the circle of tech and empower new systems programmers.</strong> So I ask of everyone who participates in the Neon project to strive to act in ways that will encourage and motivate as many people as possible to participate.</p>
+<p>Concretely, Neon uses the <a href="https://www.contributor-covenant.org/">Contributor Covenant</a> to frame the expectations and standards of how we treat people in our community. Behind the policies is a simple goal: to <strong>make our community a place that welcomes, trusts, supports, and empowers one another.</strong></p>
+<p>If that sounds good to you, wanna come join us?</p>
+</span></div></article></div><div class="post"><header class="postHeader"><h1 class="postHeaderTitle"><a href="/blog/2016/04/01/native-js-classes-in-neon">Native JS Classes in Neon</a></h1><p class="post-meta">April 1, 2016</p><div class="authorBlock"><p class="post-authorName"><a target="_blank" rel="noreferrer noopener">Dave Herman</a></p></div></header><article class="post-content"><div><span><p>⚠️ This article contains references to an outdated version of neon ⚠️</p>
+<p>Last weekend I <a href="https://github.com/rustbridge/neon/pull/58">landed a PR</a> that adds support for defining custom native classes in [Neon]({{ site.baseurl }}{% post_url 2015-12-23-neon-node-rust %}). This means you can create JavaScript objects that internally wrap---and <a href="https://doc.rust-lang.org/book/ownership.html">own</a>---a Rust data structure, along with methods that can safely access the internal Rust data.</p>
+<p>As a quick demonstration, suppose you have an <code>Employee</code> struct defined in Rust:</p>
+<pre><code class="hljs css language-rust"><span class="hljs-keyword">pub</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Employee</span></span> {
+    id: <span class="hljs-built_in">i32</span>,
+    name: <span class="hljs-built_in">String</span>,
+    <span class="hljs-comment">// etc ...</span>
+}
+</code></pre>
+<!--more-->
+<p>You can expose this to JS with the new <code>declare_types!</code> macro:</p>
+<pre><code class="hljs css language-rust">declare_types! {
+
+    <span class="hljs-comment">/// JS class wrapping Employee records.</span>
+    <span class="hljs-keyword">pub</span> class JsEmployee <span class="hljs-keyword">for</span> Employee {
+
+        init(call) {
+            <span class="hljs-keyword">let</span> scope = call.scope;
+            <span class="hljs-keyword">let</span> id = <span class="hljs-built_in">try!</span>(<span class="hljs-built_in">try!</span>(call.arguments.require(scope, <span class="hljs-number">0</span>)).check::&lt;JsInteger&gt;());
+            <span class="hljs-keyword">let</span> name = <span class="hljs-built_in">try!</span>(<span class="hljs-built_in">try!</span>(call.arguments.require(scope, <span class="hljs-number">1</span>)).to_string());
+            <span class="hljs-comment">// etc ...</span>
+            <span class="hljs-literal">Ok</span>(Employee {
+                id: id.value() <span class="hljs-keyword">as</span> <span class="hljs-built_in">i32</span>,
+                name: name.value(),
+                <span class="hljs-comment">// etc ...</span>
+            })
+        }
+
+        method name(call) {
+            <span class="hljs-keyword">let</span> scope = call.scope;
+            <span class="hljs-keyword">let</span> this: Handle&lt;JsEmployee&gt; = call.arguments.this(scope);
+            <span class="hljs-keyword">let</span> name = <span class="hljs-built_in">try!</span>(vm::lock(this, |employee| {
+                employee.name.clone()
+            });
+            <span class="hljs-literal">Ok</span>(<span class="hljs-built_in">try!</span>(JsString::new_or_throw(scope, &amp;name[..])).upcast())
+        }
+    }
+
+};
+</code></pre>
+<p>This defines a custom JS class whose instances contain an <code>Employee</code> record. It binds <code>JsEmployee</code> to a Rust type that can create the class at runtime (i.e., the constructor function and prototype object). The <code>init</code> function defines the behavior for allocating the internals during construction of a new instance. The <code>name</code> method shows an example of how you can use <code>vm::lock</code> to borrow a reference to the internal Rust data of an instance.</p>
+<p>From there, you can extract the constructor function and expose it to JS, for example by exporting it from a native module:</p>
+<pre><code class="hljs css language-rust">register_module!(m, {
+    <span class="hljs-keyword">let</span> scope = m.scope;
+    <span class="hljs-keyword">let</span> class = <span class="hljs-built_in">try!</span>(JsEmployee::class(scope));       <span class="hljs-comment">// get the class</span>
+    <span class="hljs-keyword">let</span> constructor = <span class="hljs-built_in">try!</span>(class.constructor(scope)); <span class="hljs-comment">// get the constructor</span>
+    <span class="hljs-built_in">try!</span>(m.exports.set(<span class="hljs-string">"Employee"</span>, constructor));     <span class="hljs-comment">// export the constructor</span>
+});
+</code></pre>
+<p>Then you can use instances of this type in JS just like any other object:</p>
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">const</span> { Employee } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./native'</span>);
+
+<span class="hljs-keyword">const</span> lumbergh = <span class="hljs-keyword">new</span> Employee(<span class="hljs-number">9001</span>, <span class="hljs-string">"Bill Lumbergh"</span>);
+<span class="hljs-built_in">console</span>.log(lumbergh.name()); <span class="hljs-comment">// Bill Lumbergh</span>
+</code></pre>
+<p>Since the methods on <code>Employee</code> expect <code>this</code> to have the right binary layout, they check to make sure that they aren't being called on an inappropriate object type. This means you can't segfault Node by doing something like:</p>
+<pre><code class="hljs css language-javascript">Employee.prototype.name.call({});
+</code></pre>
+<p>This safely throws a TypeError exception just like methods from other native classes like <code>Date</code> or <code>Buffer</code> do.</p>
+<p>Anyway, that's a little taste of user-defined native classes. More docs work to do!</p>
+</span></div></article></div><div class="post"><header class="postHeader"><h1 class="postHeaderTitle"><a href="/blog/2015/12/23/neon-node-rust">Neon: Node + Rust = 💖</a></h1><p class="post-meta">December 23, 2015</p><div class="authorBlock"><p class="post-authorName"><a target="_blank" rel="noreferrer noopener">Dave Herman</a></p></div></header><article class="post-content"><div><span><p>⚠️ This article contains references to an outdated version of neon ⚠️</p>
+<p>If you're a JavaScript programmer who's been intrigued by Rust's <a href="http://blog.rust-lang.org/2015/08/14/Next-year.html"><em>hack without fear</em></a> theme---making systems programming safe and fun---but you've been waiting for inspiration, I may have something for you! I've been working on <a href="https://github.com/dherman/neon">Neon</a>, a set of APIs and tools for <strong>making it super easy to write native Node modules in Rust</strong>.</p>
+<!--more-->
+<p><strong>TL;DR:</strong></p>
+<ul>
+<li><a href="https://github.com/dherman/neon">Neon</a> is an API for writing fast, crash-free native Node modules in Rust;</li>
+<li>Neon enables Rust's parallelism with guaranteed thread safety;</li>
+<li><a href="https://github.com/dherman/neon-cli">Neon-cli</a> makes it easy to create a Neon project and get started; and finally...</li>
+<li>Help wanted!</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="i-can-rust-and-so-can-you"></a><a href="#i-can-rust-and-so-can-you" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>I Can Rust and So Can You!</h2>
+<p>I wanted to make it as easy as possible to get up and running, so I built <a href="https://github.com/dherman/neon-cli">neon-cli</a>, a command-line tool that lets you generate a complete Neon project skeleton with one simple command and build your entire project with nothing more than the usual <code>npm install</code>.</p>
+<p>If you want to try building your first native module with Neon, <strong>it's super easy</strong>: install <a href="https://github.com/dherman/neon-cli">neon-cli</a> with <code>npm install -g neon-cli</code>, then create, build, and run your new project:</p>
+<pre><code class="hljs"><span class="hljs-meta">%</span><span class="bash"> neon new hello</span>
+...follow prompts...
+<span class="hljs-meta">%</span><span class="bash"> <span class="hljs-built_in">cd</span> hello</span>
+<span class="hljs-meta">%</span><span class="bash"> npm install</span>
+<span class="hljs-meta">%</span><span class="bash"> node -e <span class="hljs-string">'require("./")'</span></span>
+</code></pre>
+<p>If you don't believe me, I made a <a href="https://raw.githubusercontent.com/dherman/neon-cli/master/screencast.gif">screencast</a>, so you <em>know</em> I'm legit.</p>
+<h2><a class="anchor" aria-hidden="true" id="i-take-thee-at-thy-word"></a><a href="#i-take-thee-at-thy-word" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>I Take Thee at thy Word</h2>
+<p>To illustrate what you can do with Neon, I created a little <a href="https://github.com/dherman/wc-demo">word counting demo</a>. The demo is simple: read in the complete plays of Shakespeare and count the total number of occurrences of the word &quot;thee&quot;. First I tried implementing it in pure JS. The top-level code splits the corpus into lines, and sums up the counts for each line:</p>
+<pre><code class="hljs css language-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">search</span>(<span class="hljs-params">corpus, search</span>) </span>{
+  <span class="hljs-keyword">var</span> ls = lines(corpus);
+  <span class="hljs-keyword">var</span> total = <span class="hljs-number">0</span>;
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>, n = ls.length; i &lt; n; i++) {
+    total += wcLine(ls[i], search);
+  }
+  <span class="hljs-keyword">return</span> total;
+}
+</code></pre>
+<p>Searching an individual line involves splitting the line up into word and matching each word against the search string:</p>
+<pre><code class="hljs css language-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">wcLine</span>(<span class="hljs-params">line, search</span>) </span>{
+  <span class="hljs-keyword">var</span> words = line.split(<span class="hljs-string">' '</span>);
+  <span class="hljs-keyword">var</span> total = <span class="hljs-number">0</span>;
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>, n = words.length; i &lt; n; i++) {
+    <span class="hljs-keyword">if</span> (matches(words[i], search)) {
+      total++;
+    }
+  }
+  <span class="hljs-keyword">return</span> total;
+}
+</code></pre>
+<p>The rest of the details are pretty straightforward but definitely <a href="https://github.com/dherman/wc-demo/blob/master/lib/search.js">check out the code</a>---it's small and self-contained.</p>
+<p>On my laptop, running the algorithm across all the plays of Shakespeare usually takes about 280 -- 290ms. Not hugely expensive, but slow enough to be optimizable.</p>
+<h2><a class="anchor" aria-hidden="true" id="fall-into-our-rustic-revelry"></a><a href="#fall-into-our-rustic-revelry" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Fall Into our Rustic Revelry</h2>
+<p>One of the amazing things about Rust is that highly efficient code can still be remarkably compact and readable. In the <a href="https://github.com/dherman/wc-demo/blob/master/src/lib.rs">Rust version of the algorithm</a>, the code for summing up the counts for all the lines looks pretty similar to the JS code:</p>
+<pre><code class="hljs css language-rust"><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> total = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">for</span> word <span class="hljs-keyword">in</span> line.split(<span class="hljs-string">' '</span>) {
+    <span class="hljs-keyword">if</span> matches(word, search) {
+        total += <span class="hljs-number">1</span>;
+    }
+}
+total <span class="hljs-comment">// in Rust you can omit `return` for a trailing expression</span>
+</code></pre>
+<p>In fact, that same code can be written at a higher level of abstraction <em>without losing performance</em>, using iteration methods like <a href="http://doc.rust-lang.org/std/iter/trait.Iterator.html#method.filter"><code>filter</code></a> and <a href="http://doc.rust-lang.org/std/iter/trait.Iterator.html#method.fold"><code>fold</code></a> (similar to <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter"><code>Array.prototype.filter</code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce"><code>Array.prototype.reduce</code></a> in JS):</p>
+<pre><code class="hljs css language-rust">line.split(<span class="hljs-string">' '</span>)
+    .filter(|word| matches(word, search))
+    .fold(<span class="hljs-number">0</span>, |sum, _| sum + <span class="hljs-number">1</span>)
+</code></pre>
+<p>In my quick experiments, that even seems to shave a few milliseconds off the total running time. I think this is a nice demonstration of the power of Rust's <a href="http://blog.rust-lang.org/2015/05/11/traits.html">zero-cost abstractions</a>, where idiomatic and high-level abstractions produce the same or sometimes even better performance (by making additional optimizations possible, like eliminating bounds checks) than lower-level, more obscure code.</p>
+<p>On my machine, the simple Rust translation runs in about 80 -- 85ms. Not bad---about 3x as fast just from using Rust, and in roughly the same number of lines of code (60 in JS, 70 in Rust). BTW, I'm being approximate here with the numbers, because this isn't a remotely scientific benchmark. My goal is just to demonstrate that you <em>can</em> get significant performance improvements from using Rust; in any given situation, the particular details will of course matter.</p>
+<h2><a class="anchor" aria-hidden="true" id="their-thread-of-life-is-spun"></a><a href="#their-thread-of-life-is-spun" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Their Thread of Life is Spun</h2>
+<p>We're not done yet, though! Rust enables something even cooler for Node: we can easily and safely parallelize this code---and I mean <a href="http://blog.rust-lang.org/2015/04/10/Fearless-Concurrency.html">without the night-sweats and palpitations usually associated with multithreading</a>. Here's a quick look at the top level logic in the Rust implementation of the demo:</p>
+<pre><code class="hljs css language-rust"><span class="hljs-keyword">let</span> total = vm::lock(buffer, |data| {
+    <span class="hljs-keyword">let</span> corpus = data.as_str().unwrap();
+    <span class="hljs-keyword">let</span> lines = lines(corpus);
+    lines.into_iter()
+         .map(|line| wc_line(line, search))
+         .fold(<span class="hljs-number">0</span>, |sum, line| sum + line)
+});
+</code></pre>
+<p>The <code>vm::lock</code> API lets Neon safely expose the raw bytes of a Node <code>Buffer</code> object (i.e., a typed array) to Rust threads, by preventing JS from running in the meantime. And Rust's concurrency model makes programming with threads <em>actually fun</em>.</p>
+<p>To demonstrate how easy this can be, I used <a href="http://smallcultfollowing.com/babysteps/blog/2015/12/18/rayon-data-parallelism-in-rust/">Niko Matsakis's new Rayon crate</a> of beautiful data parallelism abstractions. Changing the demo to use Rayon is as simple as replacing the <code>into_iter</code>/<code>map</code>/<code>fold</code>/ lines above with:</p>
+<pre><code class="hljs css language-rust">lines.into_par_iter()
+     .map(|line| wc_line(line, search))
+     .sum()
+</code></pre>
+<p>Keep in mind, Rayon wasn't designed with Neon in mind---its generic primitives match the iteration protocols of Rust, so Neon was able to just pull it off the shelf.</p>
+<p>With that simple change, on my two-core MacBook Air, the demo goes from about 85ms down to about 50ms.</p>
+<h2><a class="anchor" aria-hidden="true" id="bridge-most-valiantly-with-excellent-discipline"></a><a href="#bridge-most-valiantly-with-excellent-discipline" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Bridge Most Valiantly, with Excellent Discipline</h2>
+<p>I've worked on making the integration as seamless as possible. From the Rust side, Neon functions follow a simple protocol, taking a <code>Call</code> object and returning a JavaScript value:</p>
+<pre><code class="hljs css language-rust"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">search</span></span>(call: Call) -&gt; JS&lt;Integer&gt; {
+    <span class="hljs-keyword">let</span> scope = call.scope;
+    <span class="hljs-comment">// ...</span>
+    <span class="hljs-literal">Ok</span>(Integer::new(scope, total))
+}
+</code></pre>
+<p>The <code>scope</code> object safely tracks handles into V8's garbage-collected heap. The Neon API uses the Rust type system to guarantee that your native module can't crash your app by mismanaging object handles.</p>
+<p>From the JS side, loading the native module is straightforward:</p>
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">var</span> myNeonModule = <span class="hljs-built_in">require</span>(<span class="hljs-string">'neon-bridge'</span>).load();
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="wherefore-s-this-noise"></a><a href="#wherefore-s-this-noise" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Wherefore's this Noise?</h2>
+<p>Hopefully this demo is enough to get people interested. Beyond the sheer fun of it, I think the strongest reasons for using Rust in Node are performance and parallelism. As the Rust ecosystem grows, it'll also be a way to give Node access to cool Rust libraries. Beyond that, I'm hoping that Neon can make a nice abstraction layer that just makes writing native Node modules less painful. With projects like <a href="https://blogs.windows.com/buildingapps/2015/05/12/bringing-node-js-to-windows-10-iot-core/">node-uwp</a> it might even be worth exploring evolving Neon towards a JS-engine-agnostic abstraction layer.</p>
+<p>There are lots of possibilities, but <a href="https://github.com/dherman/neon">I need help!</a> If you want to get involved, I've created a <a href="http://rustbridge.slack.com">community slack</a> (grab an invite from <a href="http://rustbridge-community-slackin.herokuapp.com">the Slackin app</a>) and a <code>#neon</code> IRC channel on <a href="https://wiki.mozilla.org/IRC">Mozilla IRC</a> (<code>irc.mozilla.org</code>).</p>
+<h2><a class="anchor" aria-hidden="true" id="a-quick-thanks"></a><a href="#a-quick-thanks" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>A Quick Thanks</h2>
+<p>There's a ton of fun exploration and work left to do but I couldn't have gotten this far without huge amounts of help already: <a href="http://oppenlander.me/articles/rust-ffi">Andrew Oppenlander's blog post</a> got me off the ground, Ben Noordhuis and Marcin Cieślak helped me wrestle with V8's tooling, I picked up a few tricks from Nathan Rajlich's <a href="https://github.com/TooTallNate/node-bindings/blob/master/bindings.js">evil genius code</a>, Adam Klein and Fedor Indutny helped me understand the V8 API, Alex Crichton helped me with compiler and linker arcana, Niko Matsakis helped me with designing the safe memory management API, and Yehuda Katz helped me with the overall design.</p>
+<p>You know what this means? <a href="https://github.com/dherman/neon"><strong>Maybe you can help too!</strong></a></p>
 </span></div></article></div><div class="docs-prevnext"></div></div></div></div></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/logo/text-logo.svg" alt="Neon" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/getting-started.html">Getting Started</a><a href="/docs/en/word-counting-guide.html">Guides</a><a href="https://api.neon-bindings.com/neon/index.html" target="_blank">API Reference</a></div><div><h5>Community</h5><a href="https://rust-bindings-slackin.herokuapp.com/">Project Chat</a><a href="https://twitter.com/rustneon" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/neon-bindings/neon">GitHub</a><a class="github-button" href="https://github.com/neon-bindings/neon" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2018 Amila Welihinda</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {

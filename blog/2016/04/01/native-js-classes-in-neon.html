@@ -1,0 +1,119 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Native JS Classes in Neon · Neon</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="⚠️ This article contains references to an outdated version of neon ⚠️"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Native JS Classes in Neon · Neon"/><meta property="og:type" content="website"/><meta property="og:url" content="https://neon-bindings.com/blog/2016/04/01/native-js-classes-in-neon"/><meta property="og:description" content="⚠️ This article contains references to an outdated version of neon ⚠️"/><meta property="og:image" content="https://neon-bindings.com/logo/text-logo.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://neon-bindings.com/logo/text-logo.svg"/><link rel="shortcut icon" href="/logo/letter-logo.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css"/><link rel="alternate" type="application/atom+xml" href="https://neon-bindings.com/blog/atom.xml" title="Neon Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://neon-bindings.com/blog/feed.xml" title="Neon Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/en"><img class="logo" src="/logo/text-logo.svg" alt="Neon"/></a><a href="/en/versions"><h3>0.2.0</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/en/intro" target="_self">Docs</a></li><li class=""><a href="https://github.com/neon-bindings/examples#table-of-contents" target="_self">Examples</a></li><li class=""><a href="/api/neon/" target="_self">API</a></li><li class=""><a href="/docs/en/community-content" target="_self">Resources</a></li><li class=""><a href="/docs/en/roadmap" target="_self">Roadmap</a></li><li class=""><a href="/en/help" target="_self">Help</a></li><li class="siteNavGroupActive"><a href="/blog/" target="_self">Blog</a></li><li class=""><a href="https://github.com/neon-bindings/neon" target="_self">GitHub</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/ja">日本語</a></li><li><a href="/es-ES">Español</a></li><li><a href="/fr">Français</a></li><li><a href="/ko">한국어</a></li><li><a href="/pt-BR">Português (Brasil)</a></li><li><a href="/ru">Русский</a></li><li><a href="/zh-CN">中文</a></li><li><a href="/zh-TW">繁體中文</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Recent Posts</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Recent Posts</h3><ul><li class="navListItem"><a class="navItem" href="/blog/2018/10/22/hello-world">New Docs and Website! 🎉🎉🎉</a></li><li class="navListItem"><a class="navItem" href="/blog/2018/01/14/rust-2018-a-neon-wish-list">#Rust2018: A Neon Wish List</a></li><li class="navListItem"><a class="navItem" href="/blog/2017/09/25/neon-wants-your-help">Neon Wants Your Help!</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/blog/2016/04/01/native-js-classes-in-neon">Native JS Classes in Neon</a></li><li class="navListItem"><a class="navItem" href="/blog/2015/12/23/neon-node-rust">Neon: Node + Rust = 💖</a></li></ul></div></div></section></div><script>
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer postContainer blogContainer"><div class="wrapper"><div class="lonePost"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle"><a href="/blog/2016/04/01/native-js-classes-in-neon">Native JS Classes in Neon</a></h1><p class="post-meta">April 1, 2016</p><div class="authorBlock"><p class="post-authorName"><a target="_blank" rel="noreferrer noopener">Dave Herman</a></p></div></header><div><span><p>⚠️ This article contains references to an outdated version of neon ⚠️</p>
+<p>Last weekend I <a href="https://github.com/rustbridge/neon/pull/58">landed a PR</a> that adds support for defining custom native classes in [Neon]({{ site.baseurl }}{% post_url 2015-12-23-neon-node-rust %}). This means you can create JavaScript objects that internally wrap---and <a href="https://doc.rust-lang.org/book/ownership.html">own</a>---a Rust data structure, along with methods that can safely access the internal Rust data.</p>
+<p>As a quick demonstration, suppose you have an <code>Employee</code> struct defined in Rust:</p>
+<pre><code class="hljs css language-rust"><span class="hljs-keyword">pub</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Employee</span></span> {
+    id: <span class="hljs-built_in">i32</span>,
+    name: <span class="hljs-built_in">String</span>,
+    <span class="hljs-comment">// etc ...</span>
+}
+</code></pre>
+<!--more-->
+<p>You can expose this to JS with the new <code>declare_types!</code> macro:</p>
+<pre><code class="hljs css language-rust">declare_types! {
+
+    <span class="hljs-comment">/// JS class wrapping Employee records.</span>
+    <span class="hljs-keyword">pub</span> class JsEmployee <span class="hljs-keyword">for</span> Employee {
+
+        init(call) {
+            <span class="hljs-keyword">let</span> scope = call.scope;
+            <span class="hljs-keyword">let</span> id = <span class="hljs-built_in">try!</span>(<span class="hljs-built_in">try!</span>(call.arguments.require(scope, <span class="hljs-number">0</span>)).check::&lt;JsInteger&gt;());
+            <span class="hljs-keyword">let</span> name = <span class="hljs-built_in">try!</span>(<span class="hljs-built_in">try!</span>(call.arguments.require(scope, <span class="hljs-number">1</span>)).to_string());
+            <span class="hljs-comment">// etc ...</span>
+            <span class="hljs-literal">Ok</span>(Employee {
+                id: id.value() <span class="hljs-keyword">as</span> <span class="hljs-built_in">i32</span>,
+                name: name.value(),
+                <span class="hljs-comment">// etc ...</span>
+            })
+        }
+
+        method name(call) {
+            <span class="hljs-keyword">let</span> scope = call.scope;
+            <span class="hljs-keyword">let</span> this: Handle&lt;JsEmployee&gt; = call.arguments.this(scope);
+            <span class="hljs-keyword">let</span> name = <span class="hljs-built_in">try!</span>(vm::lock(this, |employee| {
+                employee.name.clone()
+            });
+            <span class="hljs-literal">Ok</span>(<span class="hljs-built_in">try!</span>(JsString::new_or_throw(scope, &amp;name[..])).upcast())
+        }
+    }
+
+};
+</code></pre>
+<p>This defines a custom JS class whose instances contain an <code>Employee</code> record. It binds <code>JsEmployee</code> to a Rust type that can create the class at runtime (i.e., the constructor function and prototype object). The <code>init</code> function defines the behavior for allocating the internals during construction of a new instance. The <code>name</code> method shows an example of how you can use <code>vm::lock</code> to borrow a reference to the internal Rust data of an instance.</p>
+<p>From there, you can extract the constructor function and expose it to JS, for example by exporting it from a native module:</p>
+<pre><code class="hljs css language-rust">register_module!(m, {
+    <span class="hljs-keyword">let</span> scope = m.scope;
+    <span class="hljs-keyword">let</span> class = <span class="hljs-built_in">try!</span>(JsEmployee::class(scope));       <span class="hljs-comment">// get the class</span>
+    <span class="hljs-keyword">let</span> constructor = <span class="hljs-built_in">try!</span>(class.constructor(scope)); <span class="hljs-comment">// get the constructor</span>
+    <span class="hljs-built_in">try!</span>(m.exports.set(<span class="hljs-string">"Employee"</span>, constructor));     <span class="hljs-comment">// export the constructor</span>
+});
+</code></pre>
+<p>Then you can use instances of this type in JS just like any other object:</p>
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">const</span> { Employee } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./native'</span>);
+
+<span class="hljs-keyword">const</span> lumbergh = <span class="hljs-keyword">new</span> Employee(<span class="hljs-number">9001</span>, <span class="hljs-string">"Bill Lumbergh"</span>);
+<span class="hljs-built_in">console</span>.log(lumbergh.name()); <span class="hljs-comment">// Bill Lumbergh</span>
+</code></pre>
+<p>Since the methods on <code>Employee</code> expect <code>this</code> to have the right binary layout, they check to make sure that they aren't being called on an inappropriate object type. This means you can't segfault Node by doing something like:</p>
+<pre><code class="hljs css language-javascript">Employee.prototype.name.call({});
+</code></pre>
+<p>This safely throws a TypeError exception just like methods from other native classes like <code>Date</code> or <code>Buffer</code> do.</p>
+<p>Anyway, that's a little taste of user-defined native classes. More docs work to do!</p>
+</span></div></div><div class="blogSocialSection"></div></div><div class="blog-recent"><a class="button" href="/blog">Recent Posts</a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/logo/text-logo.svg" alt="Neon" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/getting-started.html">Getting Started</a><a href="/docs/en/word-counting-guide.html">Guides</a><a href="https://api.neon-bindings.com/neon/index.html" target="_blank">API Reference</a></div><div><h5>Community</h5><a href="https://rust-bindings-slackin.herokuapp.com/">Project Chat</a><a href="https://twitter.com/rustneon" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/neon-bindings/neon">GitHub</a><a class="github-button" href="https://github.com/neon-bindings/neon" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2018 Amila Welihinda</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: 'bfa6bb4b57d4fa853c0358ee9b195146',
+                indexName: 'amilajack_neon',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en","version:0.2.0"]}
+              });
+            </script></body></html>

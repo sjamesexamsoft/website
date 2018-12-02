@@ -14,11 +14,39 @@
         </image>
         <copyright>Copyright © 2018 Amila Welihinda</copyright>
         <item>
-            <title><![CDATA[Hello World!]]></title>
+            <title><![CDATA[New Docs and Website! 🎉🎉🎉]]></title>
             <link>https://neon-bindings.com/blog/2018/10/22/hello-world.html</link>
             <guid>https://neon-bindings.com/blog/2018/10/22/hello-world.html</guid>
             <pubDate>Mon, 22 Oct 2018 06:00:00 GMT</pubDate>
             <description><![CDATA[<p>This is the first post from the rewritten website for neon. This site is based on a static site generator, called <a href="https://docusaurus.io/">docusarus</a>, and it is specifically for documentation. Here are some of the goals of this new website some of the benefits that come with ...</p>]]></description>
+        </item>
+        <item>
+            <title><![CDATA[#Rust2018: A Neon Wish List]]></title>
+            <link>https://neon-bindings.com/blog/2018/01/14/rust-2018-a-neon-wish-list.html</link>
+            <guid>https://neon-bindings.com/blog/2018/01/14/rust-2018-a-neon-wish-list.html</guid>
+            <pubDate>Sun, 14 Jan 2018 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p>⚠️ This article contains references to an outdated version of neon ⚠️</p> <p>While I've been thoroughly enjoying the Rust community's spirited <a href="https://blog.rust-lang.org/2018/01/03/new-years-rust-a-call-for-community-blogposts.html">#Rust2018 blog-fest</a>, I wasn't really thinking of participating myself until <a href="http://jvns.ca">Julia Evans</a> pointed out <a href="https://twitter.com/b0rk/status/952370352759418880">the leadership ...</a></p>]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Neon Wants Your Help!]]></title>
+            <link>https://neon-bindings.com/blog/2017/09/25/neon-wants-your-help.html</link>
+            <guid>https://neon-bindings.com/blog/2017/09/25/neon-wants-your-help.html</guid>
+            <pubDate>Mon, 25 Sep 2017 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p>⚠️ This article contains references to an outdated version of neon ⚠️</p> <p>My history with Rust goes back a long way. But it was when I really started to understand its <a href="https://www.youtube.com/watch?v=ySW6Yk_DerY">enabling potential</a>, its capacity to empower whole groups of people to do things they c...</p>]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Native JS Classes in Neon]]></title>
+            <link>https://neon-bindings.com/blog/2016/04/01/native-js-classes-in-neon.html</link>
+            <guid>https://neon-bindings.com/blog/2016/04/01/native-js-classes-in-neon.html</guid>
+            <pubDate>Fri, 01 Apr 2016 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p>⚠️ This article contains references to an outdated version of neon ⚠️</p> <p>Last weekend I <a href="https://github.com/rustbridge/neon/pull/58">landed a PR</a> that adds support for defining custom native classes in [Neon]({{ site.baseurl }}{% post_url 2015-12-23-neon-node-rust %}). This means you can create Jav...</p>]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Neon: Node + Rust = 💖]]></title>
+            <link>https://neon-bindings.com/blog/2015/12/23/neon-node-rust.html</link>
+            <guid>https://neon-bindings.com/blog/2015/12/23/neon-node-rust.html</guid>
+            <pubDate>Wed, 23 Dec 2015 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p>⚠️ This article contains references to an outdated version of neon ⚠️</p> <p>If you're a JavaScript programmer who's been intrigued by Rust's <a href="http://blog.rust-lang.org/2015/08/14/Next-year.html"><em>hack without fear</em></a> theme---making systems programming safe and fun---but you've been waiting for inspiration, I may ...</p>]]></description>
         </item>
     </channel>
 </rss>
