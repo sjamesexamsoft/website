@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://amilajack.github.io/neon-docs/blog</id>
+    <id>https://neon-bindings.com/blog</id>
     <title>Neon Blog</title>
     <updated>2018-10-22T06:00:00Z</updated>
     <generator>Feed for Node.js</generator>
-    <link rel="alternate" href="https://amilajack.github.io/neon-docs/blog"/>
+    <link rel="alternate" href="https://neon-bindings.com/blog"/>
     <subtitle>The best place to stay up-to-date with the latest Neon news and events.</subtitle>
-    <logo>https://amilajack.github.io/neon-docs/logo/text-logo.svg</logo>
+    <logo>https://neon-bindings.com/logo/text-logo.svg</logo>
     <rights>Copyright © 2018 Amila Welihinda</rights>
     <entry>
         <title type="html"><![CDATA[Hello World!]]></title>
-        <id>https://amilajack.github.io/neon-docs/blog/2018/10/22/hello-world.html</id>
-        <link href="https://amilajack.github.io/neon-docs/blog/2018/10/22/hello-world.html">
+        <id>https://neon-bindings.com/blog/2018/10/22/hello-world.html</id>
+        <link href="https://neon-bindings.com/blog/2018/10/22/hello-world.html">
         </link>
         <updated>2018-10-22T06:00:00Z</updated>
         <summary type="html"><![CDATA[<p>This is the first post from the rewritten website for neon. This site is based on a static site generator, called <a href="https://docusaurus.io/">docusarus</a>, and it is specifically for documentation. Here are some of the goals of this new website some of the benefits that come with ...</p>]]></summary>

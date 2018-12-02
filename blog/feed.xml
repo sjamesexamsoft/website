@@ -2,21 +2,21 @@
 <rss version="2.0">
     <channel>
         <title>Neon Blog</title>
-        <link>https://amilajack.github.io/neon-docs/blog</link>
+        <link>https://neon-bindings.com/blog</link>
         <description>The best place to stay up-to-date with the latest Neon news and events.</description>
         <lastBuildDate>Mon, 22 Oct 2018 06:00:00 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>Feed for Node.js</generator>
         <image>
             <title>Neon Blog</title>
-            <url>https://amilajack.github.io/neon-docs/logo/text-logo.svg</url>
-            <link>https://amilajack.github.io/neon-docs/blog</link>
+            <url>https://neon-bindings.com/logo/text-logo.svg</url>
+            <link>https://neon-bindings.com/blog</link>
         </image>
         <copyright>Copyright © 2018 Amila Welihinda</copyright>
         <item>
             <title><![CDATA[Hello World!]]></title>
-            <link>https://amilajack.github.io/neon-docs/blog/2018/10/22/hello-world.html</link>
-            <guid>https://amilajack.github.io/neon-docs/blog/2018/10/22/hello-world.html</guid>
+            <link>https://neon-bindings.com/blog/2018/10/22/hello-world.html</link>
+            <guid>https://neon-bindings.com/blog/2018/10/22/hello-world.html</guid>
             <pubDate>Mon, 22 Oct 2018 06:00:00 GMT</pubDate>
             <description><![CDATA[<p>This is the first post from the rewritten website for neon. This site is based on a static site generator, called <a href="https://docusaurus.io/">docusarus</a>, and it is specifically for documentation. Here are some of the goals of this new website some of the benefits that come with ...</p>]]></description>
         </item>
