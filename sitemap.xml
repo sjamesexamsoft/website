@@ -27,6 +27,7 @@
 <url> <loc>https://neon-bindings.com/docs/objects</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://neon-bindings.com/docs/objects" /> </url>
 <url> <loc>https://neon-bindings.com/docs/parallelism</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://neon-bindings.com/docs/parallelism" /> </url>
 <url> <loc>https://neon-bindings.com/docs/primitives</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://neon-bindings.com/docs/primitives" /> </url>
+<url> <loc>https://neon-bindings.com/docs/publishing</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://neon-bindings.com/docs/publishing" /> </url>
 <url> <loc>https://neon-bindings.com/docs/roadmap</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://neon-bindings.com/docs/roadmap" /> </url>
 <url> <loc>https://neon-bindings.com/docs/sdl2-guide</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://neon-bindings.com/docs/sdl2-guide" /> </url>
 <url> <loc>https://neon-bindings.com/docs/type-checking</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://neon-bindings.com/docs/type-checking" /> </url>
